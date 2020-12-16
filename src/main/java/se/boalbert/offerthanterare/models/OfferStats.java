@@ -3,44 +3,67 @@ package se.boalbert.offerthanterare.models;
 
 // "Ordernr","Företagskod","Företag","Namn","Säljare","Status","Chans","Belopp","Ändrad datum","Reg datum","Kommentar","Typ"
 
+import java.time.LocalDate;
 import java.util.Date;
 
-public class OfferStats {
+public class OfferStats implements Comparable<OfferStats> {
 
-    private int ordernr;
-    private String företagsKod;
-    private String företagsNamn;
+    private int orderNr;
+    private int foretagKod;
+    private String foretagNamn;
     private String offertNamn;
     private String saljare;
-    private int status;
-    private int chans;
+    private String status;
+    private String chans;
     private double belopp;
-    private Date updateDate;
-    private Date regDate;
+    private String updateDate;
+    private String regDate;
     private String kommentar;
 
-    public int getOrdernr() {
-        return ordernr;
+    public int getOrderNr() {
+        return orderNr;
     }
 
-    public void setOrdernr(int ordernr) {
-        this.ordernr = ordernr;
+    @Override
+    public int compareTo(OfferStats o) {
+        return this.getRegDate().compareTo(o.getRegDate());
     }
 
-    public String getFöretagsKod() {
-        return företagsKod;
+    @Override
+    public String toString() {
+        return "OfferStats{" +
+                "orderNr=" + orderNr +
+                ", foretagKod='" + foretagKod + '\'' +
+                ", foretagNamn='" + foretagNamn + '\'' +
+                ", offertNamn='" + offertNamn + '\'' +
+                ", saljare='" + saljare + '\'' +
+                ", status=" + status +
+                ", chans=" + chans +
+                ", belopp=" + belopp +
+                ", updateDate=" + updateDate +
+                ", regDate=" + regDate +
+                ", kommentar='" + kommentar + '\'' +
+                '}';
     }
 
-    public void setFöretagsKod(String företagsKod) {
-        this.företagsKod = företagsKod;
+    public void setOrderNr(int orderNr) {
+        this.orderNr = orderNr;
     }
 
-    public String getFöretagsNamn() {
-        return företagsNamn;
+    public int getForetagKod() {
+        return foretagKod;
     }
 
-    public void setFöretagsNamn(String företagsNamn) {
-        this.företagsNamn = företagsNamn;
+    public void setForetagKod(int foretagKod) {
+        this.foretagKod = foretagKod;
+    }
+
+    public String getForetagNamn() {
+        return foretagNamn;
+    }
+
+    public void setForetagNamn(String foretagNamn) {
+        this.foretagNamn = foretagNamn;
     }
 
     public String getOffertNamn() {
@@ -59,19 +82,19 @@ public class OfferStats {
         this.saljare = saljare;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getChans() {
+    public String getChans() {
         return chans;
     }
 
-    public void setChans(int chans) {
+    public void setChans(String chans) {
         this.chans = chans;
     }
 
@@ -83,19 +106,19 @@ public class OfferStats {
         this.belopp = belopp;
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Date updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 
-    public Date getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
 

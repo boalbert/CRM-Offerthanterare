@@ -1,4 +1,4 @@
 package se.boalbert.offerthanterare.services;
 
-public class OfferDataService {
+public interface OfferDataService {
 }

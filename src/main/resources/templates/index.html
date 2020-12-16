@@ -48,9 +48,14 @@
         </div>
 
     </div>
+
+
+
     <div class="row">
         <div class="ten column" style="margin-top: 0%">
             <div class="ten column" style="margin-top: 0%">
+
+
                 <label for="filterInput"></label><input id="filterInput" type="search" class="light-table-filter"
                                                         data-table="u-full-width" placeholder="Sök...">
 
@@ -66,6 +71,7 @@
                         <th>Belopp</th>
                         <th>Ändrad</th>
                         <th>Skapad</th>
+                        <th>Modal</th>
                         <th>Uppdatera</th>
                     </tr>
                     </thead>
@@ -80,7 +86,15 @@
                         <td th:text="${offerStat.belopp} ? ${offerStat.belopp} : ' - '">NULL</td>
                         <td class="datum-rad" th:text="${offerStat.updateDate}">NULL</td>
                         <td class="datum-rad" th:text="${offerStat.regDate}">NULL</td>
-                        <td><a class="button button-primary" href="#">UPPDATERA</a></td>
+                        <td>
+
+                        </td>
+<!--                        <td><a class="button button-primary" href="#">UPPDATERA</a></td>-->
+                        <td><a th:href="@{/update/{id}(id=${offerStat.orderNr})}" class="button button-primary">UPPDATERA</a></td>
+
+
+
+
                     </tr>
                     </tbody>
                 </table>

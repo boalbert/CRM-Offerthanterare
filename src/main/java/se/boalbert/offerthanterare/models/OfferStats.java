@@ -3,130 +3,135 @@ package se.boalbert.offerthanterare.models;
 
 // "Ordernr","Företagskod","Företag","Namn","Säljare","Status","Chans","Belopp","Ändrad datum","Reg datum","Kommentar","Typ"
 
-import java.time.LocalDate;
-import java.util.Date;
+import com.opencsv.bean.CsvBindByName;
 
 public class OfferStats implements Comparable<OfferStats> {
 
-    private int orderNr;
-    private int foretagKod;
-    private String foretagNamn;
-    private String offertNamn;
-    private String saljare;
-    private String status;
-    private String chans;
-    private double belopp;
-    private String updateDate;
-    private String regDate;
-    private String kommentar;
+	@CsvBindByName(column = "#<HEAD>")
+	public String annotation = "<HEAD>";
 
-    public int getOrderNr() {
-        return orderNr;
-    }
+	@CsvBindByName(column = "1-Id")
+	private int orderNr;
+	private int foretagKod;
+	private String foretagNamn;
+	private String offertNamn;
+	private String saljare;
+	@CsvBindByName(column = "2-Status")
+	private String status;
+	@CsvBindByName(column = "3-Chans")
+	private String chans;
+	private double belopp;
+	private String updateDate;
+	private String regDate;
+	private String kommentar;
 
-    @Override
-    public int compareTo(OfferStats o) {
-        return this.getRegDate().compareTo(o.getRegDate());
-    }
+	public int getOrderNr() {
+		return orderNr;
+	}
 
-    @Override
-    public String toString() {
-        return "OfferStats{" +
-                "orderNr=" + orderNr +
-                ", foretagKod='" + foretagKod + '\'' +
-                ", foretagNamn='" + foretagNamn + '\'' +
-                ", offertNamn='" + offertNamn + '\'' +
-                ", saljare='" + saljare + '\'' +
-                ", status=" + status +
-                ", chans=" + chans +
-                ", belopp=" + belopp +
-                ", updateDate=" + updateDate +
-                ", regDate=" + regDate +
-                ", kommentar='" + kommentar + '\'' +
-                '}';
-    }
+	public void setOrderNr(int orderNr) {
+		this.orderNr = orderNr;
+	}
 
-    public void setOrderNr(int orderNr) {
-        this.orderNr = orderNr;
-    }
+	@Override
+	public int compareTo(OfferStats o) {
+		return this.getRegDate().compareTo(o.getRegDate());
+	}
 
-    public int getForetagKod() {
-        return foretagKod;
-    }
+	public String getRegDate() {
+		return regDate;
+	}
 
-    public void setForetagKod(int foretagKod) {
-        this.foretagKod = foretagKod;
-    }
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
 
-    public String getForetagNamn() {
-        return foretagNamn;
-    }
+	@Override
+	public String toString() {
+		return "OfferStats{" +
+				"orderNr=" + orderNr +
+				", foretagKod='" + foretagKod + '\'' +
+				", foretagNamn='" + foretagNamn + '\'' +
+				", offertNamn='" + offertNamn + '\'' +
+				", saljare='" + saljare + '\'' +
+				", status=" + status +
+				", chans=" + chans +
+				", belopp=" + belopp +
+				", updateDate=" + updateDate +
+				", regDate=" + regDate +
+				", kommentar='" + kommentar + '\'' +
+				'}';
+	}
 
-    public void setForetagNamn(String foretagNamn) {
-        this.foretagNamn = foretagNamn;
-    }
+	public int getForetagKod() {
+		return foretagKod;
+	}
 
-    public String getOffertNamn() {
-        return offertNamn;
-    }
+	public void setForetagKod(int foretagKod) {
+		this.foretagKod = foretagKod;
+	}
 
-    public void setOffertNamn(String offertNamn) {
-        this.offertNamn = offertNamn;
-    }
+	public String getForetagNamn() {
+		return foretagNamn;
+	}
 
-    public String getSaljare() {
-        return saljare;
-    }
+	public void setForetagNamn(String foretagNamn) {
+		this.foretagNamn = foretagNamn;
+	}
 
-    public void setSaljare(String saljare) {
-        this.saljare = saljare;
-    }
+	public String getOffertNamn() {
+		return offertNamn;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public void setOffertNamn(String offertNamn) {
+		this.offertNamn = offertNamn;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public String getSaljare() {
+		return saljare;
+	}
 
-    public String getChans() {
-        return chans;
-    }
+	public void setSaljare(String saljare) {
+		this.saljare = saljare;
+	}
 
-    public void setChans(String chans) {
-        this.chans = chans;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public double getBelopp() {
-        return belopp;
-    }
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-    public void setBelopp(double belopp) {
-        this.belopp = belopp;
-    }
+	public String getChans() {
+		return chans;
+	}
 
-    public String getUpdateDate() {
-        return updateDate;
-    }
+	public void setChans(String chans) {
+		this.chans = chans;
+	}
 
-    public void setUpdateDate(String updateDate) {
-        this.updateDate = updateDate;
-    }
+	public double getBelopp() {
+		return belopp;
+	}
 
-    public String getRegDate() {
-        return regDate;
-    }
+	public void setBelopp(double belopp) {
+		this.belopp = belopp;
+	}
 
-    public void setRegDate(String regDate) {
-        this.regDate = regDate;
-    }
+	public String getUpdateDate() {
+		return updateDate;
+	}
 
-    public String getKommentar() {
-        return kommentar;
-    }
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
 
-    public void setKommentar(String kommentar) {
-        this.kommentar = kommentar;
-    }
+	public String getKommentar() {
+		return kommentar;
+	}
+
+	public void setKommentar(String kommentar) {
+		this.kommentar = kommentar;
+	}
 }

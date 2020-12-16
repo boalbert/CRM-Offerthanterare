@@ -12,8 +12,13 @@ import se.boalbert.offerthanterare.models.OfferStats;
 import javax.annotation.PostConstruct;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
@@ -66,6 +71,13 @@ public class OfferDataServiceImpl implements OfferDataService {
 			offerStats.setUpdateDate(record.get("Ändrad datum"));
 			offerStats.setRegDate(record.get("Reg datum"));
 			offerStats.setKommentar(record.get("Kommentar"));
+
+
+			try {
+				offerStats.setDateDiff(calculateDateDiff(offerStats.getRegDate(),offerStats.getUpdateDate()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 
 			newStats.add(offerStats);
 		}
@@ -121,5 +133,25 @@ public class OfferDataServiceImpl implements OfferDataService {
 		}
 	}
 
-}
+	public long calculateDateDiff(String regDate, String updateDate) throws ParseException {
 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+
+		if (updateDate != null) {
+			Date firstDate = sdf.parse(regDate);
+			Date secondDate = sdf.parse(updateDate);
+
+			long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
+			long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
+			return diff;
+		} else {
+			System.out.println("Updated value was null / not correct");
+		}
+		return -1;
+
+	}
+
+
+}

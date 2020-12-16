@@ -24,9 +24,20 @@ public class OfferStats implements Comparable<OfferStats> {
 	private String updateDate;
 	private String regDate;
 	private String kommentar;
+	private long dateDiff;
+
+	public long getDateDiff() {
+		return dateDiff;
+	}
+
+	public void setDateDiff(long dateDiff) {
+		this.dateDiff = dateDiff;
+	}
+
 
 	public int getOrderNr() {
 		return orderNr;
+
 	}
 
 	public void setOrderNr(int orderNr) {

@@ -35,6 +35,11 @@ public class HomeController {
 		return "index";
 	}
 
+	@GetMapping("/modal")
+	public String modal () {
+		return "modal";
+	}
+
 	@GetMapping("/update/{id}")
 	public String showUpdatePage(@PathVariable(value = "id") int id, Model model) {
 

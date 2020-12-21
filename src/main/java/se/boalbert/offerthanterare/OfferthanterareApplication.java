@@ -3,7 +3,7 @@ package se.boalbert.offerthanterare;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@EnableScheduling - enable this when deploying
+//TODO @EnableScheduling - enable this when deploying
 @SpringBootApplication
 public class OfferthanterareApplication {
 

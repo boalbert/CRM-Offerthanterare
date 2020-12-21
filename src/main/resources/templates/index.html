@@ -21,16 +21,9 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container">
 
-<!--    <div class="row">-->
-<!--        <div class="col">-->
-<!--            <h1>Offerthanterare</h1>-->
-<!--            <p>MLT Maskin & Laserteknik AB</p>-->
-<!--        </div>-->
-<!--    </div>-->
-
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand"><h3>Offerthanterare</h3></a>
+            <a class="navbar-brand">Offerthanterare</a>
             <form class="d-flex">
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
             </form>
@@ -42,8 +35,8 @@
             <table class="table table-striped">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">Offert</th>
-                    <th scope="col">Kund</th>
+                    <th scope="row">Offert</th>
+                    <th scope="row">Kund</th>
                     <th>Namn</th>
                     <th>Säljare</th>
                     <th>Status</th>
@@ -56,9 +49,9 @@
                 </thead>
                 <tbody id="myTable">
                 <tr th:each="offerStat : ${offerStats}"
-                    th:styleappend="${offerStat.dateDiff} > 5 ? 'background: red;' : 'color: black;'">
-                    <td th:text="${offerStat.orderNr}">NULL</td>
-                    <td th:text="${offerStat.foretagNamn}">NULL</td>
+                    th:styleappend="${offerStat.dateDiff} > 5 ? 'background: grey;' : 'color: black;'">
+                    <td scope="row" th:text="${offerStat.orderNr}">NULL</td>
+                    <td scope="row" th:text="${offerStat.foretagNamn}">NULL</td>
                     <td th:text="${offerStat.offertNamn}">NULL</td>
                     <td th:text="${offerStat.saljare}">NULL</td>
                     <td th:text="${offerStat.status} ? ${offerStat.status} : ' - '">NULL</td>
@@ -66,7 +59,7 @@
                     <td th:text="${offerStat.belopp} ? ${offerStat.belopp} : ' - '">NULL</td>
                     <td th:text="${offerStat.updateDate}">NULL</td>
                     <td th:text="${offerStat.regDate}">NULL</td>
-                    <td><a class="btn btn-light" role="button" th:href="@{/update/{id}(id=${offerStat.orderNr})}">UPPDATERA</a>
+                    <td><a class="btn btn-primary" role="button" th:href="@{/update/{id}(id=${offerStat.orderNr})}">Info</a>
                     </td>
 
 
@@ -80,10 +73,9 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
 <script>
     $(document).ready(function(){
         $("#myInput").on("keyup", function() {

@@ -26,18 +26,12 @@ public class HomeController {
 		List<OfferStats> allOfferStats = offerDataServiceImpl.getAllOffers();
 		allOfferStats.sort(Collections.reverseOrder());
 
-
 		long totalBelopp = allOfferStats.stream().map(OfferStats :: getOffertNamn).count();
 
 		model.addAttribute("offerStats", allOfferStats);
 		model.addAttribute("totalBelopp", totalBelopp);
 
 		return "index";
-	}
-
-	@GetMapping("/modal")
-	public String modal () {
-		return "modal";
 	}
 
 	@GetMapping("/update/{id}")
@@ -64,8 +58,11 @@ public class HomeController {
 
 		updatedOffers.add(offerStats);
 
-		offerDataServiceImpl.saveArrayListToCsv(updatedOffers, offerDataServiceImpl.getOfferDataUpdatesFilepath());
 		// Saves it to .csv file, appends the new object
+		//TODO Update so this only happens when there is an actual change
+		// if offertStats is not equal to object in arraylist, compare object via hashcode?
+		// Look for object in Arraylist<UpdatedOffers>, compare via ordernr and save if it is different
+		offerDataServiceImpl.saveArrayListToCsv(updatedOffers, offerDataServiceImpl.getOfferDataUpdatesFilepath());
 
 		// Clears the arraylist
 		updatedOffers.clear();

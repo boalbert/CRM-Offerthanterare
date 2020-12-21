@@ -17,12 +17,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
 
+	//TODO Update this to env variables before deploying
 	private static final String OFFER_DATA_UPDATES = "src/main/java/se/boalbert/offerthanterare/datasource/offertUpdates.csv";
 	private static final String OFFER_DATA_FILE = "src/main/java/se/boalbert/offerthanterare/datasource/OFFERDATA.TXT";
 
@@ -41,7 +41,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 		return allOffers;
 	}
 
-	// Implement scheduele when deploying
+	//TODO Implement scheduele when deploying
 	// Schedules an interval when this method should run, defined via "cron = "second, minute, hour, day, month, year"
 	// Need to use annotation @EnableScheduling in main-method for scheduling to work
 	//	@Scheduled(cron = "* * 1 * * *") // Runs the first hour of every day
@@ -83,8 +83,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 		}
 
 		this.allOffers = newStats;
-
-
 	}
 
 	@Override
@@ -146,8 +144,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 			long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
 			return diff;
-		} else {
-			System.out.println("Updated value was null / not correct");
 		}
 		return -1;
 

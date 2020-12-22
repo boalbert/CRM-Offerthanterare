@@ -21,6 +21,7 @@ public class OfferStats implements Comparable<OfferStats> {
 	@CsvBindByName(column = "3-Chans")
 	private String chans;
 	private double belopp;
+	//TODO Lägg till updatedate som @CsvBindByName
 	private String updateDate;
 	private String regDate;
 	private String kommentar;

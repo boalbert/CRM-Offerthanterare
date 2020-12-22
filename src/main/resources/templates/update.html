@@ -10,81 +10,88 @@
     <title>Offerthanterare - Uppdatera</title>
     <link th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " th:rel="stylesheet"/>
     <link th:href="@{/js/index.js}" th:rel="stylesheet"/>
-
 </head>
 
 <body>
+<div class="container mt-5">
 
-<div class="container">
-
-<!--    Navbar-->
+    <!--    Navbar-->
     <div class="row">
         <div class="col-sm">
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid" th:object="${offert}">
-                    <span class="navbar-brand mb-0 h1" th:text="*{'Offert ' + orderNr + ' ' + offertNamn}"></span>
+                    <span class="navbar-brand mb-0" th:text="*{'Offert ' + orderNr + ' ' + offertNamn}"></span>
                 </div>
             </nav>
         </div>
     </div>
+</div>
 
-<!--    Offertnummer och Offertnamn-->
-<!--    <div class="row">-->
-<!--        <div class="col-sm" th:object="${offert}">-->
-<!--            <p th:text="*{'Offertnr: ' + orderNr}"></p>-->
-<!--            <p th:text="*{'Offertnamn: ' + offertNamn}"></p>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    Formulär-->
-    <div class="row">
-        <div class="col-sm">
-
-        </div>
-    </div>
-
-
+<div class="container">
     <form action="#" th:action="@{/updateOffer}" th:object="${offert}" method="POST" class="align-items-center">
 
-        <!--        Add hidden form field to handle update-->
-        <input type="hidden" th:field="*{orderNr}"/>
+        <div class="form-group row">
 
-<!--        <select class="form-select" aria-label="Default select example" th:field="*{status}">-->
-<!--            <option value="10">10: Suspect (Oklart behov)</option>-->
-<!--            <option value="20">20: Prospect - att jobba på.</option>-->
-<!--            <option value="30">30: Demo Bokad eller offertarbete</option>-->
-<!--            <option value="40">40: Offert hos kund - bearbetas</option>-->
-<!--            <option value="50">50: Avslut nära</option>-->
-<!--            <option value="60">60: Ice cold - Avvakta</option>-->
-<!--            <option value="70">70: Förlorad till konkurrent</option>-->
-<!--            <option value="80">80: Projekt nerlagt</option>-->
-<!--        </select>-->
+            <div class="col-sm-10">
+                <h4></h4>
+            </div>
+        </div>
 
-        <div class="col-auto">
-            <label class="visually-hidden" for="autoSizingSelect">Status: </label>
-            <select class="form-select" id="autoSizingSelect" th:field="*{status}">
-                <option value="10">10: Suspect (Oklart behov)</option>
-                <option value="20">20: Prospect - att jobba på.</option>
-                <option value="30">30: Demo Bokad eller offertarbete</option>
-                <option value="40">40: Offert hos kund - bearbetas</option>
-                <option value="50">50: Avslut nära</option>
-                <option value="60">60: Ice cold - Avvakta</option>
-                <option value="70">70: Förlorad till konkurrent</option>
-                <option value="80">80: Projekt nerlagt</option>
-            </select>
+<!--        Justera postion-->
+<!--        Er referens-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Er referens: </label>
+            <div class="col-sm-10">
+                Kund Kundsson
+            </div>
+        </div>
+
+        <!--    Status-->
+        <div class="form-group row">
+            <label for="autoSizingSelect" class="col-sm-2 col-form-label">Status: </label>
+            <div class="col-sm-10">
+                <select class="form-control" id="autoSizingSelect" th:field="*{status}">
+                    <option value="10">10: Suspect (Oklart behov)</option>
+                    <option value="20">20: Prospect - att jobba på.</option>
+                    <option value="30">30: Demo Bokad eller offertarbete</option>
+                    <option value="40">40: Offert hos kund - bearbetas</option>
+                    <option value="50">50: Avslut nära</option>
+                    <option value="60">60: Ice cold - Avvakta</option>
+                    <option value="70">70: Förlorad till konkurrent</option>
+                    <option value="80">80: Projekt nerlagt</option>
+                </select>
+            </div>
+        </div>
+
+        <!--    Chans-->
+        <div class="form-group row">
+            <label for="inputChans" class="col-sm-2 col-form-label">Chans</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="inputChans" th:field="*{chans}">
+            </div>
         </div>
 
 
-        <label for="chans">Chans (%): </label>
-        <input id="chans" th:field="*{chans}">
+        <!--    Kommentar-->
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Kommentar</legend>
+                <div class="col-sm-10">
 
-        <div class="form-floating">
-            <label for="floatingTextarea2"></label>
-            <textarea class="form-control" placeholder="Kommentar" id="floatingTextarea2" style="height: 100px" th:field="*{kommentar}"></textarea>
-            <br>
+                    <label for="inputKommentar"></label>
+                    <textarea class="form-control" id="inputKommentar" style="height: 100px"
+                              th:field="*{kommentar}" disabled></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <!--        Back & Update Button        -->
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <a th:href="@{/}" class="btn btn-primary">Back</a>
+                <button type="submit" class="btn btn-primary">Spara</button>
+            </div>
         </div>
-
-
 
         <!--        Below is hidden from input-->
         <input type="hidden" th:field="*{orderNr}" placeholder="OrderId">
@@ -96,11 +103,42 @@
         <input type="hidden" th:field="*{updateDate}" placeholder="OrderId">
         <input type="hidden" th:field="*{{regDate}}" placeholder="RegDatum">
 
-        <!--        Update Button        -->
-        <a th:href="@{/}" class="btn btn-primary">Back</a>
-        <button type="submit" class="btn btn-primary">Spara</button>
     </form>
+</div>
 
+<!--Other offers for this customer-->
+<div class="containter mt-5">
+    <div class="mx-auto" style="width: 1100px;">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Offert</th>
+                <th>Namn</th>
+                <th>Säljare</th>
+                <th>Status</th>
+                <th>Chans</th>
+                <th>Belopp</th>
+                <th>Ändrad</th>
+                <th>Skapad</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="offersCustomer : ${offersCustomer}"
+                th:styleappend="${offersCustomer.dateDiff}">
+                <td th:text="${offersCustomer.orderNr}">NULL</td>
+                <td th:text="${offersCustomer.offertNamn}">NULL</td>
+                <td th:text="${offersCustomer.saljare}">NULL</td>
+                <td th:text="${offersCustomer.status} ? ${offersCustomer.status} : ' - '">NULL</td>
+                <td th:text="${offersCustomer.chans} ? ${offersCustomer.chans} : ' - '">NULL</td>
+                <td th:text="${offersCustomer.belopp} ? ${offersCustomer.belopp} : ' - '">NULL</td>
+                <td th:text="${offersCustomer.updateDate}">NULL</td>
+                <td th:text="${offersCustomer.regDate}">NULL</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>
 
 </body>

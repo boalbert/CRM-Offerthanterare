@@ -41,6 +41,7 @@ public class HomeController {
 
 		model.addAttribute("offert", offerStats);
 		model.addAttribute("listOffers", offerDataServiceImpl.getAllOffers());
+		model.addAttribute("offersCustomer",offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffers(),offerStats));
 
 		return "update";
 	}

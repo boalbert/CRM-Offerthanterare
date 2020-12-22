@@ -149,5 +149,23 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	}
 
+	public List<OfferStats> offersCustomer (List<OfferStats> allOffers, OfferStats offerStats) {
+
+		List<OfferStats> offersCustomer = new ArrayList<>();
+
+
+		for(int i = 0; i < allOffers.size(); i++) {
+
+			if(allOffers.get(i).getForetagKod() == offerStats.getForetagKod()) {
+				offersCustomer.add(allOffers.get(i));
+			}
+
+		}
+
+		offersCustomer.remove(offerStats);
+		return offersCustomer;
+
+	}
+
 
 }

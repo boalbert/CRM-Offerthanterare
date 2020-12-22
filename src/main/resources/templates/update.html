@@ -146,6 +146,7 @@
                 <th>Belopp (SEK)</th>
                 <th>Ändrad</th>
                 <th>Skapad</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -159,6 +160,9 @@
                 <td th:text="${offersCustomer.belopp} ? ${offersCustomer.belopp} : ' - '">NULL</td>
                 <td th:text="${offersCustomer.updateDate}">NULL</td>
                 <td th:text="${offersCustomer.regDate}">NULL</td>
+                <td><a class="btn btn-primary" role="button"
+                       th:href="@{/update/{id}(id=${offersCustomer.orderNr})}">MER</a>
+                </td>
             </tr>
             </tbody>
         </table>

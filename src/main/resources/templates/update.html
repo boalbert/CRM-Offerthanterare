@@ -37,18 +37,24 @@
             </div>
         </div>
 
-<!--        Justera postion-->
 <!--        Er referens-->
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Er referens: </label>
+            <label for="inputReferens" class="col-sm-2 col-form-label">Er Referens</label>
             <div class="col-sm-10">
-                Kund Kundsson
+                <input class="form-control" id="inputReferens" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputPurchaseOrder" class="col-sm-2 col-form-label">Ert ordernr</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="inputPurchaseOrder" disabled>
             </div>
         </div>
 
         <!--    Status-->
         <div class="form-group row">
-            <label for="autoSizingSelect" class="col-sm-2 col-form-label">Status: </label>
+            <label for="autoSizingSelect" class="col-sm-2 col-form-label">Status </label>
             <div class="col-sm-10">
                 <select class="form-control" id="autoSizingSelect" th:field="*{status}">
                     <option value="10">10: Suspect (Oklart behov)</option>
@@ -65,7 +71,7 @@
 
         <!--    Chans-->
         <div class="form-group row">
-            <label for="inputChans" class="col-sm-2 col-form-label">Chans</label>
+            <label for="inputChans" class="col-sm-2 col-form-label">Chans (%)</label>
             <div class="col-sm-10">
                 <input class="form-control" id="inputChans" th:field="*{chans}">
             </div>
@@ -88,7 +94,7 @@
         <!--        Back & Update Button        -->
         <div class="form-group row">
             <div class="col-sm-10">
-                <a th:href="@{/}" class="btn btn-primary">Back</a>
+                <a th:href="@{/}" class="btn btn-primary">Tillbaka</a>
                 <button type="submit" class="btn btn-primary">Spara</button>
             </div>
         </div>
@@ -118,7 +124,7 @@
                 <th>Säljare</th>
                 <th>Status</th>
                 <th>Chans</th>
-                <th>Belopp</th>
+                <th>Belopp (SEK)</th>
                 <th>Ändrad</th>
                 <th>Skapad</th>
             </tr>

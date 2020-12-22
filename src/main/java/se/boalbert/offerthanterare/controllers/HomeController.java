@@ -24,11 +24,15 @@ public class HomeController {
 	public String home(Model model) {
 
 		List<OfferStats> allOfferStats = offerDataServiceImpl.getAllOffers();
+
+		// Sort by date created
 		allOfferStats.sort(Collections.reverseOrder());
 
-		long totalBelopp = allOfferStats.stream().map(OfferStats :: getOffertNamn).count();
-
+		// List all avalible offers
 		model.addAttribute("offerStats", allOfferStats);
+
+		// Show total value of all offers
+		long totalBelopp = allOfferStats.stream().map(OfferStats :: getOffertNamn).count();
 		model.addAttribute("totalBelopp", totalBelopp);
 
 		return "index";
@@ -39,9 +43,11 @@ public class HomeController {
 
 		OfferStats offerStats = offerDataServiceImpl.getOfferById(id);
 
+		// This offer object
 		model.addAttribute("offert", offerStats);
-		model.addAttribute("listOffers", offerDataServiceImpl.getAllOffers());
-		model.addAttribute("offersCustomer",offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffers(),offerStats));
+
+		// Other offers for this customer
+		model.addAttribute("offersCustomer", offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffers(), offerStats));
 
 		return "update";
 	}
@@ -53,16 +59,13 @@ public class HomeController {
 		// Updated the read-Arraylist allOffers
 		offerDataServiceImpl.updateAllOffersWithUpdatedFields(offerStats);
 
-
 		// List<OfferStats> allOfferStats = offerDataServiceImpl.getAllOffers();
 		ArrayList<OfferStats> updatedOffers = offerDataServiceImpl.getUpdatedOffers();
 
+		//TODO Move this to controllers / inside function
 		updatedOffers.add(offerStats);
 
 		// Saves it to .csv file, appends the new object
-		//TODO Update so this only happens when there is an actual change
-		// if offertStats is not equal to object in arraylist, compare object via hashcode?
-		// Look for object in Arraylist<UpdatedOffers>, compare via ordernr and save if it is different
 		offerDataServiceImpl.saveArrayListToCsv(updatedOffers, offerDataServiceImpl.getOfferDataUpdatesFilepath());
 
 		// Clears the arraylist
@@ -70,6 +73,4 @@ public class HomeController {
 
 		return "redirect:/";
 	}
-
-
 }

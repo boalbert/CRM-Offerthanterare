@@ -11,16 +11,14 @@
     <link th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " th:rel="stylesheet"/>
     <link th:href="@{/js/index.js}" th:rel="stylesheet"/>
 
-
 </head>
 <body>
 
 <!--<p th:text="${'Antal aktiva offerter: ' + totalBelopp + '.'}"></p>-->
 
-<!-- Primary Page Layout
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container mt-5">
 
+    <!--    Header and filter table-->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand">Offerthanterare</a>
@@ -30,6 +28,32 @@
         </div>
     </nav>
 
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+
+    </div>
+
+    <!--    Dropdown-filter-->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"></a>
+            <form class="d-flex">
+                <select data-table="table table-light table-striped table-hover" class="form-select"
+                        aria-label="Default select example">
+                    <option selected value="">Välj avdelning</option>
+                    <option value="VIB">VIB</option>
+                    <option value="ALI">ALI</option>
+                    <option value="3D">3D</option>
+                    <option value="SCH">SCH</option>
+                </select>
+            </form>
+        </div>
+    </nav>
+
+
+    <!--Table-->
     <div class="row">
         <div class="col">
             <table class="table table-light table-striped table-hover">
@@ -75,6 +99,7 @@
         crossorigin="anonymous"></script>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 
+<!--Search function-->
 <script>
     $(document).ready(function () {
         $("#myInput").on("keyup", function () {
@@ -86,5 +111,74 @@
     });
 </script>
 
+<!--Dropdown filter-->
+<script>
+
+    (function (document) {
+        'use strict';
+
+        var LightTableFilter = (function (Arr) {
+
+            var _input;
+            var _select;
+
+            function _onInputEvent(e) {
+                _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+
+            function _onSelectEvent(e) {
+                _select = e.target;
+                var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+                Arr.forEach.call(tables, function (table) {
+                    Arr.forEach.call(table.tBodies, function (tbody) {
+                        Arr.forEach.call(tbody.rows, _filterSelect);
+                    });
+                });
+            }
+
+            function _filter(row) {
+
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+
+            }
+
+            function _filterSelect(row) {
+
+                var text_select = row.textContent.toLowerCase(),
+                    val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+                row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+
+            }
+
+            return {
+                init: function () {
+                    var inputs = document.getElementsByClassName('form-control');
+                    var selects = document.getElementsByClassName('form-select');
+                    Arr.forEach.call(inputs, function (input) {
+                        input.oninput = _onInputEvent;
+                    });
+                    Arr.forEach.call(selects, function (select) {
+                        select.onchange = _onSelectEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        document.addEventListener('readystatechange', function () {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+
+    })(document);
+
+</script>
 </body>
 </html>

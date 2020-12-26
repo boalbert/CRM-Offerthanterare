@@ -10,7 +10,7 @@ public interface OfferDataService {
 
 	List<OfferStats> getAllOffers();
 
-	void importOfferData() throws IOException;
+//	void importOfferData() throws IOException;
 
 	OfferStats getOfferById(int id);
 

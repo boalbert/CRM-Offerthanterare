@@ -15,3 +15,7 @@
 
 ### Etc
 * Glöm ej lägga in PTC 850 som schemalagt, krävs för att import ska fungera
+	//TODO Implement scheduele when deploying
+	// Schedules an interval when this method should run, defined via "cron = "second, minute, hour, day, month, year"
+	// Need to use annotation @EnableScheduling in main-method for scheduling to work
+	//	@Scheduled(cron = "* * 1 * * *") // Runs the first hour of every day*/

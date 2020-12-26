@@ -33,7 +33,11 @@ public class HomeController {
 
 		// Show total value of all offers
 		long amountOfOffers = allOfferStats.stream().map(OfferStats :: getOffertNamn).count();
-		model.addAttribute("amountOfOffers", amountOfOffers);
+		model.addAttribute("countOffers", amountOfOffers);
+
+		int valueOfOffers = (int) allOfferStats.stream().mapToDouble(OfferStats::getBelopp).sum();
+
+		model.addAttribute("valueOfOffers",valueOfOffers);
 
 		return "index";
 	}

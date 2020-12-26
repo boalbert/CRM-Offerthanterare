@@ -104,14 +104,6 @@
             </div>
         </div>
 
-        <!--        &lt;!&ndash;    Chans&ndash;&gt;-->
-        <!--        <div class="form-group row">-->
-        <!--            <label for="inputChans" class="col-sm-2 col-form-label">Chans (%)</label>-->
-        <!--            <div class="col-sm-10">-->
-        <!--                <input class="form-control" id="inputChans" th:field="*{chans}">-->
-        <!--            </div>-->
-        <!--        </div>-->
-
         <!--        Chans 2-->
         <div class="form-group row">
             <label for="autoSizingSelectChans" class="col-sm-2 col-form-label">Chans (%) </label>
@@ -155,13 +147,14 @@
 
 
         <!--        Below is hidden from input-->
+        <input type="hidden" th:field="*{koncernBolag}" placeholder="Koncenbolag">
         <input type="hidden" th:field="*{orderNr}" placeholder="OrderId">
         <input type="hidden" th:field="*{foretagKod}" placeholder="foretagKod">
         <input type="hidden" th:field="*{foretagNamn}" placeholder="kundId">
         <input type="hidden" th:field="*{offertNamn}" placeholder="projektNamn">
         <input type="hidden" th:field="*{saljare}" placeholder="Säljare">
-        <input type="hidden" th:field="*{belopp}" placeholder="OrderId">
-        <input type="hidden" th:field="*{updateDate}" placeholder="OrderId">
+        <input type="hidden" th:field="*{belopp}" placeholder="belopp">
+        <input type="hidden" th:field="*{updateDate}" placeholder="updateDate">
         <input type="hidden" th:field="*{{regDate}}" placeholder="RegDatum">
 
     </form>
@@ -182,6 +175,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>Bolag</th>
                 <th>Offert</th>
                 <th>Namn</th>
                 <th>Säljare</th>
@@ -196,6 +190,7 @@
             <tbody>
             <tr th:each="offersCustomer : ${offersCustomer}"
                 th:styleappend="${offersCustomer.dateDiff}">
+                <td th:text="${offersCustomer.koncernBolag}">NULL</td>
                 <td th:text="${offersCustomer.orderNr}">NULL</td>
                 <td th:text="${offersCustomer.offertNamn}">NULL</td>
                 <td th:text="${offersCustomer.saljare}">NULL</td>

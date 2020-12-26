@@ -14,14 +14,34 @@
 </head>
 <body>
 
-<!--<p th:text="${'Antal aktiva offerter: ' + totalBelopp + '.'}"></p>-->
-
 <div class="container mt-5">
 
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Info</h5>
+                    <p class="card-text">Data hämtad från MLT AB och Protoma. Klicka på <strong>mer</strong> för att justera din offerts status,
+                        chans, inköpsnummer, läsa kommentarer, med mera. Under <strong>mer</strong> ser du även andra offerter på kunden.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Antal offerter</h5>
+                    <p class="card-text" th:text="${totalBelopp + ' tillgängliga.'}">Här visas antal aktiva offerter.</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--    Header and filter table-->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light mt-5">
         <div class="container-fluid">
-            <a class="navbar-brand">Offerthanterare</a>
+            <a class="navbar-brand"></a>
             <form class="d-flex">
                 <label for="myInput"></label><input class="form-control" id="myInput" type="text" placeholder="Sök...">
             </form>
@@ -59,8 +79,9 @@
             <table class="table table-light table-striped table-hover">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="row">Offert</th>
-                    <th scope="row">Kund</th>
+                    <th>Bolag</th>
+                    <th>Offert</th>
+                    <th>Kund</th>
                     <th>Namn</th>
                     <th>Säljare</th>
                     <th>Status</th>
@@ -74,6 +95,7 @@
                 <tbody id="myTable">
                 <tr th:each="offerStat : ${offerStats}"
                     th:styleappend="${offerStat.dateDiff} > 30 ? 'background: #ffffcc;' : 'color: black;'">
+                    <td th:text="${offerStat.koncernBolag}">NULL</td>
                     <td th:text="${offerStat.orderNr}">NULL</td>
                     <td th:text="${offerStat.foretagNamn}">NULL</td>
                     <td th:text="${offerStat.offertNamn}">NULL</td>

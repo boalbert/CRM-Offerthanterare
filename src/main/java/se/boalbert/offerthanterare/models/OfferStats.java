@@ -9,9 +9,9 @@ public class OfferStats implements Comparable<OfferStats> {
 
 	@CsvBindByName(column = "#<HEAD>")
 	public String annotation = "<HEAD>";
-
 	@CsvBindByName(column = "1-Id")
 	private int orderNr;
+	private String koncernBolag;
 	private int foretagKod;
 	private String foretagNamn;
 	private String offertNamn;
@@ -26,7 +26,6 @@ public class OfferStats implements Comparable<OfferStats> {
 	private String regDate;
 	private String kommentar;
 	private long dateDiff;
-
 	public long getDateDiff() {
 		return dateDiff;
 	}
@@ -48,6 +47,14 @@ public class OfferStats implements Comparable<OfferStats> {
 	@Override
 	public int compareTo(OfferStats o) {
 		return this.getRegDate().compareTo(o.getRegDate());
+	}
+
+	public String getKoncernBolag() {
+		return koncernBolag;
+	}
+
+	public void setKoncernBolag(String koncernBolag) {
+		this.koncernBolag = koncernBolag;
 	}
 
 	public String getRegDate() {

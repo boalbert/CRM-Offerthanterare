@@ -30,11 +30,27 @@
 <div class="container">
     <form action="#" th:action="@{/updateOffer}" th:object="${offert}" method="POST" class="align-items-center">
 
+        <!--        Bolag-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Bolag</label>
+            <div class="col-sm-10">
+                <p class="col-form-label" th:text="*{koncernBolag}"></p>
+            </div>
+        </div>
+
         <!--        Offertnr-->
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Offertnummer</label>
             <div class="col-sm-10">
                 <p class="col-form-label" th:text="*{orderNr}"></p>
+            </div>
+        </div>
+
+        <!--        Offertnamn-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Offertnamn</label>
+            <div class="col-sm-10">
+                <p class="col-form-label" th:text="*{offertNamn}"></p>
             </div>
         </div>
 
@@ -54,19 +70,13 @@
             </div>
         </div>
 
-        <!--        Offertnamn-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Namn</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{offertNamn}"></p>
-            </div>
-        </div>
+
 
         <!--        Belopp-->
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Belopp</label>
             <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{belopp}"></p>
+                <p class="col-form-label" th:text="*{belopp + ' SEK'}"></p>
             </div>
         </div>
 

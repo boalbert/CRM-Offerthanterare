@@ -1,4 +1,5 @@
 # TODO
+***
 
 ### Önskemål från CHER
 * Sätt 1 månad = färg gul på rad
@@ -6,11 +7,11 @@
 * Sortera offerter efter Chans
 
 ### Mina idéer
-* Lägg in mer info under "Info/Uppdatera" 
+* Lägg in mer info under "Info/Uppdatera", lägg till detta i klass OffertStats
     * Er referens
     * Ert ordernr
     * Avdelning
-    * Liten tabell med alla andra offerter på kunden
+    * Done - Liten tabell med alla andra offerter på kunden
 
 ### Etc
 * Glöm ej lägga in PTC 850 som schemalagt, krävs för att import ska fungera

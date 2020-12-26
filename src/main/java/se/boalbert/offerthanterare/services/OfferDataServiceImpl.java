@@ -24,7 +24,9 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	//TODO Update this to env variables before deploying
 	private static final String OFFER_DATA_UPDATES = "src/main/java/se/boalbert/offerthanterare/datasource/offertUpdates.csv";
-	private static final String OFFER_DATA_FILE = "src/main/java/se/boalbert/offerthanterare/datasource/OFFERDATA.TXT";
+
+	private static final String OFFER_DATA_FILE_MLT = "src/main/java/se/boalbert/offerthanterare/datasource/MLT_OFFERDATA.TXT";
+	private static final String OFFER_DATA_FILE_PROTOMA = "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_OFFERDATA.TXT";
 
 	private ArrayList<OfferStats> updatedOffers = new ArrayList<>();
 	private List<OfferStats> allOffers = new ArrayList<>();
@@ -52,14 +54,50 @@ public class OfferDataServiceImpl implements OfferDataService {
 		// This list will temporarily hold the imported data
 		List<OfferStats> newStats = new ArrayList<>();
 
-		Reader in = new FileReader(OFFER_DATA_FILE, StandardCharsets.UTF_8);
-		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withNullString("").withFirstRecordAsHeader().withQuote('"').parse(in);
-		for (CSVRecord record : records) {
+		// Reading MLT File
+		Reader fileReaderMLTAB = new FileReader(OFFER_DATA_FILE_MLT, StandardCharsets.UTF_8);
+		Iterable<CSVRecord> recordsMlt = CSVFormat.DEFAULT.withNullString("").withFirstRecordAsHeader().withQuote('"').parse(fileReaderMLTAB);
 
-			// "Ordernr","Företagskod","Företag","Namn","Säljare","Status","Chans","Belopp","Ändrad datum","Reg datum","Kommentar","Typ"
+		// Reader Protoma File
+		Reader fileReaderProtoma = new FileReader(OFFER_DATA_FILE_PROTOMA, StandardCharsets.UTF_8);
+		Iterable<CSVRecord> recordsProtoma = CSVFormat.DEFAULT.withNullString("").withFirstRecordAsHeader().withQuote('"').parse(fileReaderProtoma);
+
+		for (CSVRecord record : recordsMlt) {
+
+			// "KB, "Ordernr","Företagskod","Företag","Namn","Säljare","Status","Chans","Belopp","Ändrad datum","Reg datum","Kommentar","Typ"
 
 			OfferStats offerStats = new OfferStats();
 
+			offerStats.setKoncernBolag(record.get("KB"));
+			offerStats.setOrderNr(Integer.parseInt(record.get("Ordernr")));
+			offerStats.setForetagKod(Integer.parseInt(record.get("Företagskod")));
+			offerStats.setForetagNamn(record.get("Företag"));
+			offerStats.setOffertNamn(record.get("Namn"));
+			offerStats.setSaljare(record.get("Säljare"));
+			offerStats.setStatus(record.get("Status"));
+			offerStats.setChans(record.get("Chans"));
+			offerStats.setBelopp(Double.parseDouble(record.get("Belopp")));
+			offerStats.setUpdateDate(record.get("Ändrad datum"));
+			offerStats.setRegDate(record.get("Reg datum"));
+			offerStats.setKommentar(record.get("Kommentar"));
+
+
+			try {
+				offerStats.setDateDiff(calculateDateDiff(offerStats.getRegDate(),offerStats.getUpdateDate()));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			newStats.add(offerStats);
+		}
+
+		for (CSVRecord record : recordsProtoma) {
+
+			// "KB, "Ordernr","Företagskod","Företag","Namn","Säljare","Status","Chans","Belopp","Ändrad datum","Reg datum","Kommentar","Typ"
+
+			OfferStats offerStats = new OfferStats();
+
+			offerStats.setKoncernBolag(record.get("KB"));
 			offerStats.setOrderNr(Integer.parseInt(record.get("Ordernr")));
 			offerStats.setForetagKod(Integer.parseInt(record.get("Företagskod")));
 			offerStats.setForetagNamn(record.get("Företag"));
@@ -154,10 +192,16 @@ public class OfferDataServiceImpl implements OfferDataService {
 		List<OfferStats> offersCustomer = new ArrayList<>();
 
 
-		for(int i = 0; i < allOffers.size(); i++) {
+		for (OfferStats allOffer : allOffers) {
 
-			if(allOffers.get(i).getForetagKod() == offerStats.getForetagKod()) {
-				offersCustomer.add(allOffers.get(i));
+			//			if(allOffers.get(i).getForetagKod() == offerStats.getForetagKod()) {
+			//				offersCustomer.add(allOffers.get(i));
+			//			}
+
+			if (allOffer.getForetagNamn().equalsIgnoreCase(offerStats.getForetagNamn())) {
+
+				offersCustomer.add(allOffer);
+
 			}
 
 		}

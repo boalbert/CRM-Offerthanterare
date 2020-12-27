@@ -12,6 +12,7 @@ import se.boalbert.offerthanterare.services.OfferDataServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -24,19 +25,13 @@ public class HomeController {
 	public String home(Model model) {
 
 		List<OfferStats> allOfferStats = offerDataServiceImpl.getAllOffers();
-
-		// Sort by date created
-		allOfferStats.sort(Collections.reverseOrder());
-
-		// List all avalible offers
+		Collections.sort(allOfferStats, Comparator.comparingInt(OfferStats ::getChans).reversed());
 		model.addAttribute("offerStats", allOfferStats);
 
-		// Show total value of all offers
 		long amountOfOffers = allOfferStats.stream().map(OfferStats :: getOffertNamn).count();
 		model.addAttribute("countOffers", amountOfOffers);
 
 		int valueOfOffers = (int) allOfferStats.stream().mapToDouble(OfferStats::getBelopp).sum();
-
 		model.addAttribute("valueOfOffers",valueOfOffers);
 
 		return "index";

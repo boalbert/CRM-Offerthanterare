@@ -92,10 +92,9 @@ public class OfferDataServiceImpl implements OfferDataService {
 		offerStats.setForetagKod(Integer.parseInt(record.get(2)));
 		offerStats.setForetagNamn(record.get(3));
 		offerStats.setOffertNamn(record.get(4));
-
 		offerStats.setSaljare(record.get(5));
-		offerStats.setStatus(record.get(6));
-		offerStats.setChans(record.get(7));
+		if(record.get(6) != null) offerStats.setStatus(Integer.parseInt(record.get(6)));
+		if(record.get(7) != null) offerStats.setChans(Integer.parseInt(record.get(7)));
 		offerStats.setBelopp(Double.parseDouble(record.get(8)));
 		offerStats.setUpdateDate(record.get(9));
 		offerStats.setRegDate(record.get(10));
@@ -108,7 +107,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 	public long calculateDateDiff(String regDate, String updateDate) throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
 
 		if (updateDate != null) {
 			Date firstDate = sdf.parse(regDate);
@@ -132,7 +130,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 				offersCustomer.add(offer);
 			}
-
 		}
 
 		offersCustomer.remove(offerStats);
@@ -158,8 +155,8 @@ public class OfferDataServiceImpl implements OfferDataService {
 	@Override
 	public void updateAllOffersWithUpdatedFields(OfferStats offerStats) {
 		int ordernr = offerStats.getOrderNr();
-		String status = offerStats.getStatus();
-		String chans = offerStats.getChans();
+		int status = offerStats.getStatus();
+		int chans = offerStats.getChans();
 		String kommentar = offerStats.getKommentar();
 
 		for (OfferStats offer : allOffers) {

@@ -5,7 +5,7 @@ package se.boalbert.offerthanterare.models;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class OfferStats implements Comparable<OfferStats> {
+public class OfferStats {
 
 	@CsvBindByName(column = "#<HEAD>")
 	public String annotation = "<HEAD>";
@@ -17,9 +17,9 @@ public class OfferStats implements Comparable<OfferStats> {
 	private String offertNamn;
 	private String saljare;
 	@CsvBindByName(column = "2-Status")
-	private String status;
+	private int status;
 	@CsvBindByName(column = "3-Chans")
-	private String chans;
+	private int chans;
 	private double belopp;
 	//TODO Lägg till updatedate som @CsvBindByName
 	private String updateDate;
@@ -42,11 +42,6 @@ public class OfferStats implements Comparable<OfferStats> {
 
 	public void setOrderNr(int orderNr) {
 		this.orderNr = orderNr;
-	}
-
-	@Override
-	public int compareTo(OfferStats o) {
-		return this.getRegDate().compareTo(o.getRegDate());
 	}
 
 	public String getKoncernBolag() {
@@ -114,19 +109,19 @@ public class OfferStats implements Comparable<OfferStats> {
 		this.saljare = saljare;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
-	public String getChans() {
+	public int getChans() {
 		return chans;
 	}
 
-	public void setChans(String chans) {
+	public void setChans(int chans) {
 		this.chans = chans;
 	}
 

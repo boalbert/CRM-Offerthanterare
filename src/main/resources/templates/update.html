@@ -13,210 +13,238 @@
 </head>
 
 <body>
-<div class="container mt-5">
 
-    <!--    Navbar-->
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm">
-            <nav class="navbar navbar-light bg-light">
-                <div class="container-fluid">
-                    <span class="navbar-brand mb-0">Offert</span>
-                </div>
-            </nav>
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+            <div class="col m-2">
+                <h1 class="display-3">Offertinformation</h1>
+                <p class="lead">Brödtext</p>
+
+            </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <form action="#" th:action="@{/updateOffer}" th:object="${offert}" method="POST" class="align-items-center">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
 
-        <!--        Bolag-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Bolag</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{koncernBolag}"></p>
-            </div>
-        </div>
+            <div class="card m-2">
+                <div class="card-body">
+                    <h5 class="card-title">Obs</h5>
+                    <p class="card-text">
+                        Inmatad information importeras till Pyramid med X intervall.
+                    </p>
+                    <p class="card-text">
+                        Aktuell informatin visas alltid på huvudsidan.
+                    </p>
+                    <p class="card-text">
+                        Det kan alltså dröja en stund innan det syns inuti affärssystemet.
+                    </p>
 
-        <!--        Offertnr-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Offertnummer</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{orderNr}"></p>
-            </div>
-        </div>
-
-        <!--        Offertnamn-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Offertnamn</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{offertNamn}"></p>
-            </div>
-        </div>
-
-        <!--        Säljare-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Säljare</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{saljare}"></p>
-            </div>
-        </div>
-
-        <!--        Kundnamn-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Kund</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{foretagNamn}"></p>
-            </div>
-        </div>
-
-
-
-        <!--        Belopp-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Belopp</label>
-            <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{#numbers.formatDecimal(belopp, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'}"></p>
-            </div>
-        </div>
-
-
-        <!--        Er referens-->
-        <div class="form-group row">
-            <label for="inputReferens" class="col-sm-2 col-form-label">Er Referens</label>
-            <div class="col-sm-10">
-                <input class="form-control" id="inputReferens" disabled>
-            </div>
-        </div>
-
-        <!--        Inköpsorder-->
-        <div class="form-group row">
-            <label for="inputPurchaseOrder" class="col-sm-2 col-form-label">Ert ordernr</label>
-            <div class="col-sm-10">
-                <input class="form-control" id="inputPurchaseOrder" disabled>
-            </div>
-        </div>
-
-        <!--    Status-->
-        <div class="form-group row">
-            <label for="autoSizingSelectStatus" class="col-sm-2 col-form-label">Status </label>
-            <div class="col-sm-10">
-                <select class="form-control" id="autoSizingSelectStatus" th:field="*{status}">
-                    <option value="10">10: Suspect (Oklart behov)</option>
-                    <option value="20">20: Prospect - att jobba på.</option>
-                    <option value="30">30: Demo Bokad eller offertarbete</option>
-                    <option value="40">40: Offert hos kund - bearbetas</option>
-                    <option value="50">50: Avslut nära</option>
-                    <option value="60">60: Ice cold - Avvakta</option>
-                    <option value="70">70: Förlorad till konkurrent</option>
-                    <option value="80">80: Projekt nerlagt</option>
-                </select>
-            </div>
-        </div>
-
-        <!--        Chans 2-->
-        <div class="form-group row">
-            <label for="autoSizingSelectChans" class="col-sm-2 col-form-label">Chans (%) </label>
-            <div class="col-sm-10">
-                <select class="form-control" id="autoSizingSelectChans" th:field="*{chans}">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
-                    <option value="60">60</option>
-                    <option value="70">70</option>
-                    <option value="80">80</option>
-                    <option value="90">90</option>
-                    <option value="100">100</option>
-                </select>
-            </div>
-        </div>
-
-
-        <!--    Kommentar-->
-        <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Kommentar</legend>
-                <div class="col-sm-10">
-
-                    <label for="inputKommentar"></label>
-                    <textarea class="form-control" id="inputKommentar" style="height: 100px"
-                              th:field="*{kommentar}" disabled></textarea>
                 </div>
             </div>
-        </fieldset>
 
-        <!--        Back & Update Button        -->
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <a th:href="@{/}" class="btn btn-primary">Tillbaka</a>
-                <button type="submit" class="btn btn-primary">Spara</button>
+        </div>
+        <div class="col-6">
+
+            <form action="#" th:action="@{/updateOffer}" th:object="${offert}" method="POST" class="align-items-center">
+
+                <!--        Bolag-->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Bolag</label>
+                    <div class="col-sm-10">
+                        <p class="col-form-label" th:text="*{koncernBolag}"></p>
+                    </div>
+                </div>
+
+                <!--        Offertnr-->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Offertnummer</label>
+                    <div class="col-sm-10">
+                        <p class="col-form-label" th:text="*{orderNr}"></p>
+                    </div>
+                </div>
+
+                <!--        Offertnamn-->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Offertnamn</label>
+                    <div class="col-sm-10">
+                        <p class="col-form-label" th:text="*{offertNamn}"></p>
+                    </div>
+                </div>
+
+                <!--        Säljare-->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Säljare</label>
+                    <div class="col-sm-10">
+                        <p class="col-form-label" th:text="*{saljare}"></p>
+                    </div>
+                </div>
+
+                <!--        Kundnamn-->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Kund</label>
+                    <div class="col-sm-10">
+                        <p class="col-form-label" th:text="*{foretagNamn}"></p>
+                    </div>
+                </div>
+
+
+
+                <!--        Belopp-->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Belopp</label>
+                    <div class="col-sm-10">
+                        <p class="col-form-label" th:text="*{#numbers.formatDecimal(belopp, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'}"></p>
+                    </div>
+                </div>
+
+
+                <!--        Er referens-->
+                <div class="form-group row">
+                    <label for="inputReferens" class="col-sm-2 col-form-label">Er Referens</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="inputReferens" disabled>
+                    </div>
+                </div>
+
+                <!--        Inköpsorder-->
+                <div class="form-group row">
+                    <label for="inputPurchaseOrder" class="col-sm-2 col-form-label">Ert ordernr</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="inputPurchaseOrder" disabled>
+                    </div>
+                </div>
+
+                <!--    Status-->
+                <div class="form-group row">
+                    <label for="autoSizingSelectStatus" class="col-sm-2 col-form-label">Status </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="autoSizingSelectStatus" th:field="*{status}">
+                            <option value="10">10: Suspect (Oklart behov)</option>
+                            <option value="20">20: Prospect - att jobba på.</option>
+                            <option value="30">30: Demo Bokad eller offertarbete</option>
+                            <option value="40">40: Offert hos kund - bearbetas</option>
+                            <option value="50">50: Avslut nära</option>
+                            <option value="60">60: Ice cold - Avvakta</option>
+                            <option value="70">70: Förlorad till konkurrent</option>
+                            <option value="80">80: Projekt nerlagt</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--        Chans 2-->
+                <div class="form-group row">
+                    <label for="autoSizingSelectChans" class="col-sm-2 col-form-label">Chans (%) </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="autoSizingSelectChans" th:field="*{chans}">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="70">70</option>
+                            <option value="80">80</option>
+                            <option value="90">90</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!--    Kommentar-->
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Kommentar</legend>
+                        <div class="col-sm-10">
+
+                            <label for="inputKommentar"></label>
+                            <textarea class="form-control" id="inputKommentar" style="height: 100px"
+                                      th:field="*{kommentar}" disabled></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!--        Back & Update Button        -->
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <a th:href="@{/}" class="btn btn-primary">Tillbaka</a>
+                        <button type="submit" class="btn btn-primary">Spara</button>
+                    </div>
+                </div>
+
+
+                <!--        Below is hidden from input-->
+                <input type="hidden" th:field="*{koncernBolag}" placeholder="Koncenbolag">
+                <input type="hidden" th:field="*{orderNr}" placeholder="OrderId">
+                <input type="hidden" th:field="*{foretagKod}" placeholder="foretagKod">
+                <input type="hidden" th:field="*{foretagNamn}" placeholder="kundId">
+                <input type="hidden" th:field="*{offertNamn}" placeholder="projektNamn">
+                <input type="hidden" th:field="*{saljare}" placeholder="Säljare">
+                <input type="hidden" th:field="*{belopp}" placeholder="belopp">
+                <input type="hidden" th:field="*{updateDate}" placeholder="updateDate">
+                <input type="hidden" th:field="*{{regDate}}" placeholder="RegDatum">
+
+            </form>
+
+
+
+            <!--        Infobox ang. andra offerter på kund-->
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Info</strong> Nedan visas aktiva offerter för vald kund.
             </div>
+
+            <!--        Offerter på kund-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Bolag</th>
+                    <th>Offert</th>
+                    <th>Namn</th>
+                    <th>Säljare</th>
+                    <th>Status</th>
+                    <th>Chans</th>
+                    <th>Belopp (SEK)</th>
+                    <th>Ändrad</th>
+                    <th>Skapad</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="offersCustomer : ${offersCustomer}"
+                    th:styleappend="${offersCustomer.dateDiff}">
+                    <td th:text="${offersCustomer.koncernBolag}">NULL</td>
+                    <td th:text="${offersCustomer.orderNr}">NULL</td>
+                    <td th:text="${offersCustomer.offertNamn}">NULL</td>
+                    <td th:text="${offersCustomer.saljare}">NULL</td>
+                    <td th:text="${offersCustomer.status} ? ${offersCustomer.status} : ' - '">NULL</td>
+                    <td th:text="${offersCustomer.chans} ? ${offersCustomer.chans} : ' - '">NULL</td>
+                    <td th:text="${#numbers.formatDecimal(offersCustomer.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offersCustomer.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">NULL</td>
+                    <td th:text="${offersCustomer.updateDate}">NULL</td>
+                    <td th:text="${offersCustomer.regDate}">NULL</td>
+                    <td><a class="btn btn-primary" role="button"
+                           th:href="@{/update/{id}(id=${offersCustomer.orderNr})}">MER</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
 
 
-        <!--        Below is hidden from input-->
-        <input type="hidden" th:field="*{koncernBolag}" placeholder="Koncenbolag">
-        <input type="hidden" th:field="*{orderNr}" placeholder="OrderId">
-        <input type="hidden" th:field="*{foretagKod}" placeholder="foretagKod">
-        <input type="hidden" th:field="*{foretagNamn}" placeholder="kundId">
-        <input type="hidden" th:field="*{offertNamn}" placeholder="projektNamn">
-        <input type="hidden" th:field="*{saljare}" placeholder="Säljare">
-        <input type="hidden" th:field="*{belopp}" placeholder="belopp">
-        <input type="hidden" th:field="*{updateDate}" placeholder="updateDate">
-        <input type="hidden" th:field="*{{regDate}}" placeholder="RegDatum">
 
-    </form>
-</div>
-
-<!--Other offers for this customer-->
-<div class="containter mt-5">
+    <div class="col-3">
 
 
-    <div class="mx-auto" style="width: 1100px;">
-
-        <!--        Infobox ang. andra offerter på kund-->
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Info</strong> Nedan visas aktiva offerter för vald kund.
-        </div>
-
-        <!--        Offerter på kund-->
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Bolag</th>
-                <th>Offert</th>
-                <th>Namn</th>
-                <th>Säljare</th>
-                <th>Status</th>
-                <th>Chans</th>
-                <th>Belopp (SEK)</th>
-                <th>Ändrad</th>
-                <th>Skapad</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="offersCustomer : ${offersCustomer}"
-                th:styleappend="${offersCustomer.dateDiff}">
-                <td th:text="${offersCustomer.koncernBolag}">NULL</td>
-                <td th:text="${offersCustomer.orderNr}">NULL</td>
-                <td th:text="${offersCustomer.offertNamn}">NULL</td>
-                <td th:text="${offersCustomer.saljare}">NULL</td>
-                <td th:text="${offersCustomer.status} ? ${offersCustomer.status} : ' - '">NULL</td>
-                <td th:text="${offersCustomer.chans} ? ${offersCustomer.chans} : ' - '">NULL</td>
-                <td th:text="${#numbers.formatDecimal(offersCustomer.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offersCustomer.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">NULL</td>
-                <td th:text="${offersCustomer.updateDate}">NULL</td>
-                <td th:text="${offersCustomer.regDate}">NULL</td>
-                <td><a class="btn btn-primary" role="button"
-                       th:href="@{/update/{id}(id=${offersCustomer.orderNr})}">MER</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
     </div>
 </div>
+
+
 
 </body>
 </html>

@@ -1,16 +1,16 @@
 package se.boalbert.offerthanterare.services;
 
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
 import se.boalbert.offerthanterare.models.OfferStats;
 
 import javax.annotation.PostConstruct;
-import java.io.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,12 +22,11 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
 
+	private static final String OFFER_DATA_FILE_MLT =       "src/main/java/se/boalbert/offerthanterare/datasource/MLT_OFFERDATA.TXT";
+	private static final String OFFER_DATA_FILE_PROTOMA =   "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_OFFERDATA.TXT";
 	//TODO Update this to env variables before deploying
-	private static final String OFFER_DATA_UPDATES = "src/main/java/se/boalbert/offerthanterare/datasource/offertUpdates.csv";
-	private static final String OFFER_DATA_FILE_MLT = "src/main/java/se/boalbert/offerthanterare/datasource/MLT_OFFERDATA.TXT";
-	private static final String OFFER_DATA_FILE_PROTOMA = "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_OFFERDATA.TXT";
-
-	private ArrayList<OfferStats> updatedOffers = new ArrayList<>();
+	private final String OFFER_DATA_UPDATES_MLT =           "src/main/java/se/boalbert/offerthanterare/datasource/MLT_UPDATES.CSV";
+	private final String OFFER_DATA_UPDATES_PROTOMA =       "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_UPDATES.CSV";
 	private List<OfferStats> allOffers = new ArrayList<>();
 
 	//TODO @Scheduele()
@@ -93,8 +92,8 @@ public class OfferDataServiceImpl implements OfferDataService {
 		offerStats.setForetagNamn(record.get(3));
 		offerStats.setOffertNamn(record.get(4));
 		offerStats.setSaljare(record.get(5));
-		if(record.get(6) != null) offerStats.setStatus(Integer.parseInt(record.get(6)));
-		if(record.get(7) != null) offerStats.setChans(Integer.parseInt(record.get(7)));
+		if (record.get(6) != null) offerStats.setStatus(Integer.parseInt(record.get(6)));
+		if (record.get(7) != null) offerStats.setChans(Integer.parseInt(record.get(7)));
 		offerStats.setBelopp(Double.parseDouble(record.get(8)));
 		offerStats.setUpdateDate(record.get(9));
 		offerStats.setRegDate(record.get(10));
@@ -121,6 +120,15 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	}
 
+	public String checkObjectCompanyBeforeSavingToArrayList(OfferStats offerStats) {
+		if (offerStats.getKoncernBolag().equalsIgnoreCase("MLT")) {
+			return OFFER_DATA_UPDATES_MLT;
+		} else if (offerStats.getKoncernBolag().equalsIgnoreCase("Protoma")) {
+			return OFFER_DATA_UPDATES_PROTOMA;
+		}
+		return null;
+	}
+
 	public List<OfferStats> offersCustomer(List<OfferStats> allOffers, OfferStats offerStats) {
 
 		List<OfferStats> offersCustomer = new ArrayList<>();
@@ -134,24 +142,40 @@ public class OfferDataServiceImpl implements OfferDataService {
 		return offersCustomer;
 	}
 
-	//TODO Seperate lists per company
-	@Override
-	public void saveArrayListToCsv(ArrayList<OfferStats> arrayList, String filepath) {
 
-		try {
-			Writer writer = new FileWriter(filepath, true);
-			StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).withSeparator(',').withApplyQuotesToAll(false).build();
-			beanToCsv.write(arrayList);
-			writer.close();
-			System.out.println("Sucessfully written file to: " + filepath);
-		} catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
-			System.out.println("Writing to " + filepath + " failed.");
-			e.printStackTrace();
+	public void saveObjectToCSV(OfferStats offerStats, String filepath) {
+
+		String head = "<HEAD>";
+		int orderNr = offerStats.getOrderNr();
+		int status = offerStats.getStatus();
+		int chans = offerStats.getChans();
+
+
+		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filepath, StandardCharsets.UTF_8, true), CSVFormat.EXCEL)) {
+			printer.printRecord(head, orderNr,status,chans);
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 	}
 
+	public List<OfferStats> getAllOffers() {
+		return allOffers;
+	}
+
 	@Override
-	public void updateAllOffersWithUpdatedFields(OfferStats offerStats) {
+	public OfferStats getOfferById(int id) {
+
+		for (OfferStats allOffer : allOffers) {
+			if (allOffer.getOrderNr() == id) {
+				System.out.println("Offer found: " + allOffer.toString());
+				return allOffer;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void updateObjectInAllOffersList(OfferStats offerStats) {
 		int ordernr = offerStats.getOrderNr();
 		int status = offerStats.getStatus();
 		int chans = offerStats.getChans();
@@ -166,32 +190,4 @@ public class OfferDataServiceImpl implements OfferDataService {
 			}
 		}
 	}
-
-	public String getOfferDataUpdatesFilepath() {
-		return OFFER_DATA_UPDATES;
-	}
-
-	public ArrayList<OfferStats> getUpdatedOffers() {
-		return updatedOffers;
-	}
-
-	public List<OfferStats> getAllOffers() {
-		return allOffers;
-	}
-
-	@Override
-	public OfferStats getOfferById(int id) {
-
-		for (OfferStats allOffer : allOffers) {
-
-
-			if (allOffer.getOrderNr() == id) {
-				System.out.println("Offer found: " + allOffer.toString());
-				return allOffer;
-			}
-		}
-		return null;
-	}
-
-
 }

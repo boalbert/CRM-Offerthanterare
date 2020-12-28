@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import se.boalbert.offerthanterare.models.OfferStats;
 import se.boalbert.offerthanterare.services.OfferDataServiceImpl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -55,20 +54,8 @@ public class HomeController {
 	@PostMapping("/updateOffer")
 	public String saveOffer(@ModelAttribute("offer") OfferStats offerStats) {
 
-		// Updated the read-Arraylist allOffers
-		offerDataServiceImpl.updateAllOffersWithUpdatedFields(offerStats);
-
-		// List<OfferStats> allOfferStats = offerDataServiceImpl.getAllOffers();
-		ArrayList<OfferStats> updatedOffers = offerDataServiceImpl.getUpdatedOffers();
-
-		//TODO Move this to controllers / inside function
-		updatedOffers.add(offerStats);
-
-		// Saves it to .csv file, appends the new object
-		offerDataServiceImpl.saveArrayListToCsv(updatedOffers, offerDataServiceImpl.getOfferDataUpdatesFilepath());
-
-		// Clears the arraylist
-		updatedOffers.clear();
+		offerDataServiceImpl.updateObjectInAllOffersList(offerStats);
+		offerDataServiceImpl.saveObjectToCSV(offerStats, offerDataServiceImpl.checkObjectCompanyBeforeSavingToArrayList(offerStats));
 
 		return "redirect:/";
 	}

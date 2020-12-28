@@ -14,10 +14,10 @@ public interface OfferDataService {
 
 	OfferStats getOfferById(int id);
 
-	void saveArrayListToCsv(ArrayList<OfferStats> arrayList, String filepath);
+//	void saveArrayListToCsv(ArrayList<OfferStats> arrayList, String filepath);
 
 
-	void updateAllOffersWithUpdatedFields(OfferStats offerStats);
+	void updateObjectInAllOffersList(OfferStats offerStats);
 
 
 }

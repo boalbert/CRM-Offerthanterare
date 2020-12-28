@@ -1,27 +1,16 @@
 package se.boalbert.offerthanterare.models;
 
-
-// "Ordernr","Företagskod","Företag","Namn","Säljare","Status","Chans","Belopp","Ändrad datum","Reg datum","Kommentar","Typ"
-
-import com.opencsv.bean.CsvBindByName;
-
 public class OfferStats {
 
-	@CsvBindByName(column = "#<HEAD>")
-	public String annotation = "<HEAD>";
-	@CsvBindByName(column = "1-Id")
 	private int orderNr;
 	private String koncernBolag;
 	private int foretagKod;
 	private String foretagNamn;
 	private String offertNamn;
 	private String saljare;
-	@CsvBindByName(column = "2-Status")
 	private int status;
-	@CsvBindByName(column = "3-Chans")
 	private int chans;
 	private double belopp;
-	//TODO Lägg till updatedate som @CsvBindByName
 	private String updateDate;
 	private String regDate;
 	private String kommentar;

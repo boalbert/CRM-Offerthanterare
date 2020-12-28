@@ -37,38 +37,28 @@
                         + #numbers.formatDecimal(valueOfOffers, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'}">
                         Här visas totalt offertvärde.
                     </p>
-
-
-
-
-
                 </div>
             </div>
         </div>
     </div>
 
-    <!--    Header and filter table-->
-    <nav class="navbar navbar-light bg-light mt-5">
-        <div class="container-fluid">
-            <a class="navbar-brand"></a>
+    <!--    Search box-->
+
+    <div class="row">
+        <div class="col-sm">
+            <p class="lead">Sök efter säljare, kundnamn, status, etc.</p>
             <form class="d-flex">
                 <label for="myInput"></label><input class="form-control" id="myInput" type="text" placeholder="Sök...">
             </form>
         </div>
-    </nav>
-
-    <div class="row">
-        <div class="col-sm">
-
-        </div>
 
     </div>
 
-    <!--    Dropdown-filter-->
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand"></a>
+<!--    Filter box -->
+    <div class="row">
+        <div class="col-sm">
             <form class="d-flex">
+                <p>Filtrera per avdelning</p>
                 <select data-table="table table-light table-striped table-hover" class="form-select"
                         aria-label="Default select example">
                     <option selected value="">Välj avdelning</option>
@@ -79,7 +69,8 @@
                 </select>
             </form>
         </div>
-    </nav>
+
+    </div>
 
 
     <!--Table-->
@@ -111,7 +102,12 @@
                     <td th:text="${offerStat.saljare}">NULL</td>
                     <td th:text="${offerStat.status} ? ${offerStat.status} : ' - '">NULL</td>
                     <td th:text="${offerStat.chans} ? ${offerStat.chans} : ' - '">NULL</td>
-                    <td th:text="${offerStat.belopp} ? ${offerStat.belopp} : ' - '">NULL</td>
+                    <td th:text="${#numbers.formatDecimal(offerStat.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offerStat.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">NULL</td>
+
+
+
+
+
                     <td th:text="${offerStat.updateDate}">NULL</td>
                     <td th:text="${offerStat.regDate}">NULL</td>
                     <td><a class="btn btn-primary" role="button"

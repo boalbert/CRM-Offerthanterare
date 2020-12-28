@@ -76,7 +76,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Belopp</label>
             <div class="col-sm-10">
-                <p class="col-form-label" th:text="*{belopp + ' SEK'}"></p>
+                <p class="col-form-label" th:text="*{#numbers.formatDecimal(belopp, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'}"></p>
             </div>
         </div>
 
@@ -206,7 +206,7 @@
                 <td th:text="${offersCustomer.saljare}">NULL</td>
                 <td th:text="${offersCustomer.status} ? ${offersCustomer.status} : ' - '">NULL</td>
                 <td th:text="${offersCustomer.chans} ? ${offersCustomer.chans} : ' - '">NULL</td>
-                <td th:text="${offersCustomer.belopp} ? ${offersCustomer.belopp} : ' - '">NULL</td>
+                <td th:text="${#numbers.formatDecimal(offersCustomer.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offersCustomer.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">NULL</td>
                 <td th:text="${offersCustomer.updateDate}">NULL</td>
                 <td th:text="${offersCustomer.regDate}">NULL</td>
                 <td><a class="btn btn-primary" role="button"

@@ -14,108 +14,150 @@
 </head>
 <body>
 
-<div class="container mt-5">
 
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Info</h5>
-                    <p class="card-text">Data hämtad från MLT AB och Protoma. Klicka på <strong>mer</strong> för att justera din offerts status,
-                        chans, inköpsnummer, läsa kommentarer, med mera. Här hittar du även andra offerter på kunden.</p>
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+            <div class="col m-2">
+                <h1 class="display-3">Offerthanterare</h1>
+                <p class="lead">Filtrera på kund, säljare, belopp, status, etc.</p>
 
-                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card">
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+
+            <!--                Information-->
+            <div class="card m-2">
+                <div class="card-body">
+                    <h5 class="card-title">Information</h5>
+                    <p class="card-text">Data hämtad från MLT AB och Protoma.
+                    </p>
+                    <p class="card-text">
+                        Klicka på <kbd>MER</kbd> för att se detaljer och justera din offert. Du ser även andra aktiva offerter på kund.
+                    <p>Du kan justera:</p>
+                    <ul>
+                        <li>Status</li>
+                        <li>Chans</li>
+                        <li>Referens</li>
+                        <li>Inköpsnummer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--            Färg-->
+            <div class="card m-2">
+                <div class="card-body">
+                    <h5 class="card-title">Radfärg</h5>
+                    <p class="card-text">
+                    <p>Gul - Offert har ej uppdaterats på 30 dagar.</p>
+                    <p>Röd - Offert har ej uppdaterats på 60+ dagar.</p>
+                </div>
+            </div>
+
+            <div class="card m-2">
+                <!--                Statistik-->
                 <div class="card-body">
                     <h5 class="card-title">Statistik</h5>
-                    <p class="card-text" th:text="${countOffers + ' aktiva offerter.'}">Här visas antal aktiva offerter.</p>
+                    <p class="card-text" th:text="${countOffers + ' aktiva offerter.'}">Här visas antal aktiva
+                        offerter.</p>
                     <p class="card-text"
                        th:text="${'Total offertvärde är '
                         + #numbers.formatDecimal(valueOfOffers, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'}">
                         Här visas totalt offertvärde.
                     </p>
+
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-9">
 
-    <!--    Search box-->
+            <div class="col m-2">
 
-    <div class="row">
-        <div class="col-sm">
-            <p class="lead">Sök efter säljare, kundnamn, status, etc.</p>
-            <form class="d-flex">
-                <label for="myInput"></label><input class="form-control" id="myInput" type="text" placeholder="Sök...">
-            </form>
-        </div>
+                <form class="d-flex">
+                    <label for="myInput"></label><input class="form-control" id="myInput" type="text"
+                                                        placeholder="Filtrera...">
+                </form>
+            </div>
 
-    </div>
-
-<!--    Filter box -->
-    <div class="row">
-        <div class="col-sm">
-            <form class="d-flex">
-                <p>Filtrera per avdelning</p>
-                <select data-table="table table-light table-striped table-hover" class="form-select"
-                        aria-label="Default select example">
-                    <option selected value="">Välj avdelning</option>
-                    <option value="VIB">VIB</option>
-                    <option value="ALI">ALI</option>
-                    <option value="3D">3D</option>
-                    <option value="SCH">SCH</option>
-                </select>
-            </form>
-        </div>
-
-    </div>
+            <div class="col-sm-4 m-2">
+                <form>
+                    <select name="bolag" class="custom-select" data-table="table table-light table-striped table-hover">
+                        <option selected value="">Bolag</option>
+                        <option value="MLT AB">MLT AB</option>
+                        <option value="Protoma">Protoma</option>
+                        <option value="Runtime">Runtime</option>
+                    </select>
+                </form>
+            </div>
 
 
-    <!--Table-->
-    <div class="row">
-        <div class="col">
-            <table class="table table-light table-striped table-hover">
-                <thead class="thead-light">
-                <tr>
-                    <th>Bolag</th>
-                    <th>Offert</th>
-                    <th>Kund</th>
-                    <th>Namn</th>
-                    <th>Säljare</th>
-                    <th>Status</th>
-                    <th>Chans</th>
-                    <th>Belopp</th>
-                    <th>Ändrad</th>
-                    <th>Skapad</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody id="myTable">
-                <tr th:each="offerStat : ${offerStats}"
-                    th:styleappend="${offerStat.dateDiff} > 30 ? 'background: #ffffcc;' : 'color: black;'">
-                    <td th:text="${offerStat.koncernBolag}">NULL</td>
-                    <td th:text="${offerStat.orderNr}">NULL</td>
-                    <td th:text="${offerStat.foretagNamn}">NULL</td>
-                    <td th:text="${offerStat.offertNamn}">NULL</td>
-                    <td th:text="${offerStat.saljare}">NULL</td>
-                    <td th:text="${offerStat.status} ? ${offerStat.status} : ' - '">NULL</td>
-                    <td th:text="${offerStat.chans} ? ${offerStat.chans} : ' - '">NULL</td>
-                    <td th:text="${#numbers.formatDecimal(offerStat.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offerStat.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">NULL</td>
+            <!--Dropdown-->
+            <div class="col-sm-4 m-2">
 
 
+                <form>
+                    <select name="avdelning" class="custom-select"
+                            data-table="table table-light table-striped table-hover">
+                        <option selected value="">Avdelning</option>
+                        <option value="VIB">VIB</option>
+                        <option value="ALI">ALI</option>
+                        <option value="3D">3D</option>
+                        <option value="SCH">SCH</option>
+                        <option value="IM">IM</option>
+                    </select>
+                </form>
 
 
+            </div>
 
-                    <td th:text="${offerStat.updateDate}">NULL</td>
-                    <td th:text="${offerStat.regDate}">NULL</td>
-                    <td><a class="btn btn-primary" role="button"
-                           th:href="@{/update/{id}(id=${offerStat.orderNr})}">MER</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="col m-2">
+                <table class="table table-light table-striped table-hover table-bordered">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Bolag</th>
+                        <th>Offert</th>
+                        <th>Kund</th>
+                        <th>Namn</th>
+                        <th>Säljare</th>
+                        <th>Status</th>
+                        <th>Chans</th>
+                        <th>Belopp</th>
+                        <th>Ändrad</th>
+                        <th>Skapad</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    <tr th:each="offerStat : ${offerStats}"
+                        th:styleappend="${offerStat.dateDiff} > 30 ? 'background: #ffffcc;' : 'color: black;'">
+                        <td th:text="${offerStat.koncernBolag}">NULL</td>
+                        <td th:text="${offerStat.orderNr}">NULL</td>
+                        <td th:text="${offerStat.foretagNamn}">NULL</td>
+                        <td th:text="${offerStat.offertNamn}">NULL</td>
+                        <td th:text="${offerStat.saljare}">NULL</td>
+                        <td th:text="${offerStat.status} ? ${offerStat.status} : ' - '">NULL</td>
+                        <td th:text="${offerStat.chans} ? ${offerStat.chans} : ' - '">NULL</td>
+                        <td th:text="${#numbers.formatDecimal(offerStat.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offerStat.belopp, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">
+                            NULL
+                        </td>
+
+
+                        <td th:text="${offerStat.updateDate}">NULL</td>
+                        <td th:text="${offerStat.regDate}">NULL</td>
+                        <td><a class="btn btn-primary" role="button"
+                               th:href="@{/update/{id}(id=${offerStat.orderNr})}">MER</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -187,7 +229,7 @@
             return {
                 init: function () {
                     var inputs = document.getElementsByClassName('form-control');
-                    var selects = document.getElementsByClassName('form-select');
+                    var selects = document.getElementsByClassName('custom-select');
                     Arr.forEach.call(inputs, function (input) {
                         input.oninput = _onInputEvent;
                     });

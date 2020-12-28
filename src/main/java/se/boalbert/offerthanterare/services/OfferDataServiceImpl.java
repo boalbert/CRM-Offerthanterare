@@ -126,13 +126,11 @@ public class OfferDataServiceImpl implements OfferDataService {
 		List<OfferStats> offersCustomer = new ArrayList<>();
 
 		for (OfferStats offer : allOffers) {
-			if (offer.getForetagNamn().equalsIgnoreCase(offerStats.getForetagNamn())) {
-
+			if (offer.getForetagNamn().equalsIgnoreCase(offerStats.getForetagNamn()) && offer.getOrderNr() != offerStats.getOrderNr()) {
 				offersCustomer.add(offer);
 			}
 		}
 
-		offersCustomer.remove(offerStats);
 		return offersCustomer;
 	}
 

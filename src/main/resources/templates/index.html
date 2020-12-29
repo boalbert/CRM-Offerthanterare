@@ -17,7 +17,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
         </div>
         <div class="col-9">
             <div class="col m-2">
@@ -26,12 +26,14 @@
 
             </div>
         </div>
+        <div class="col-1">
+        </div>
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
 
             <!--                Information-->
             <div class="card m-2">
@@ -145,7 +147,7 @@
                         <td th:text="${offer.salesPerson}">NULL</td>
                         <td th:text="${offer.status} ? ${offer.status} : ' - '">NULL</td>
                         <td th:text="${offer.chance} ? ${offer.chance} : ' - '">NULL</td>
-                        <td th:text="${#numbers.formatDecimal(offer.offerSum, 1, 'DEFAULT', 0, 'DEFAULT')} ? ${#numbers.formatDecimal(offer.offerSum, 1, 'DEFAULT', 0, 'DEFAULT')} : ' - '">
+                        <td th:text="${#numbers.formatDecimal(offer.offerSum, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'} ? ${#numbers.formatDecimal(offer.offerSum, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'} : ' - '">
                             NULL
                         </td>
 
@@ -159,6 +161,8 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="col-1">
         </div>
     </div>
 </div>

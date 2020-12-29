@@ -30,16 +30,16 @@ public class ReadWriteDataImpl implements ReadWriteData {
 	public static ArrayList<Offer> importDataFromFolder() throws IOException, ParseException {
 
 		Path filePath = Paths.get(offerDirectory);
-		List<Path> listOffers = listFiles(filePath);
+		List<Path> listFiles = listFiles(filePath);
 
 		ArrayList<Offer> importedOffers = new ArrayList<>();
 
-		for (Path path : listOffers) {
+		for (Path file : listFiles) {
 
-			String absolutPath = String.valueOf(path.toAbsolutePath());
+			String absolutPath = String.valueOf(file.toAbsolutePath());
 
 			Reader fileReader = new FileReader(absolutPath, StandardCharsets.UTF_8);
-			Iterable<CSVRecord> records = CSVFormat.
+			Iterable<CSVRecord> recordsOffers = CSVFormat.
 					newFormat(',')
 					.withQuote('"')
 					.withIgnoreEmptyLines(true)
@@ -47,17 +47,14 @@ public class ReadWriteDataImpl implements ReadWriteData {
 					.withRecordSeparator("\r\n")
 					.parse(fileReader);
 
+			for (CSVRecord recordOffer : recordsOffers) {
 
-
-			for (CSVRecord record : records) {
-
-				Offer offer = offerDataServiceImpl.createOffer(record);
+				Offer offer = offerDataServiceImpl.createOffer(recordOffer);
 
 				importedOffers.add(offer);
 
 			}
 		}
-
 		return importedOffers;
 	}
 
@@ -77,7 +74,6 @@ public class ReadWriteDataImpl implements ReadWriteData {
 		int orderNr = offer.getOfferNo();
 		int status = offer.getStatus();
 		int chans = offer.getChance();
-
 
 		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filepath, StandardCharsets.UTF_8, true), CSVFormat.EXCEL)) {
 			printer.printRecord(head, orderNr,status,chans);

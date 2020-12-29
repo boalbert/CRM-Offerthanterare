@@ -47,7 +47,7 @@ public class HomeController {
 		model.addAttribute("offer", offer);
 
 		// Other offers for this customer
-		model.addAttribute("offersCustomer", offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffers(), offer));
+		model.addAttribute("offersCustomer", offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffersSortedByChance(), offer));
 
 		return "update";
 	}

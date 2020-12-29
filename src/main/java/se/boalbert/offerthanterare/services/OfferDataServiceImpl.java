@@ -12,69 +12,85 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
 
-	private static final String OFFER_DATA_FILE_MLT =       "src/main/java/se/boalbert/offerthanterare/datasource/MLT_OFFERDATA.TXT";
-	private static final String OFFER_DATA_FILE_PROTOMA =   "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_OFFERDATA.TXT";
+	String offerDirectory = "src/main/java/se/boalbert/offerthanterare/datasource/import";
+
+
+
 	//TODO Update this to env variables before deploying
 	private final String OFFER_DATA_UPDATES_MLT =           "src/main/java/se/boalbert/offerthanterare/datasource/MLT_UPDATES.CSV";
 	private final String OFFER_DATA_UPDATES_PROTOMA =       "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_UPDATES.CSV";
 	private List<OfferStats> allOffers = new ArrayList<>();
+
+	public ArrayList<OfferStats> importDataFromFolder() throws IOException, ParseException {
+
+		Path filePath = Paths.get(offerDirectory);
+		List<Path> listOffers = listFiles(filePath);
+
+		ArrayList<OfferStats> importedOffers = new ArrayList<>();
+
+		for (Path path : listOffers) {
+
+			String absolutPath = String.valueOf(path.toAbsolutePath());
+
+			Reader fileReader = new FileReader(absolutPath, StandardCharsets.UTF_8);
+			Iterable<CSVRecord> records = CSVFormat.
+					newFormat(',')
+					.withQuote('"')
+					.withIgnoreEmptyLines(true)
+					.withNullString("")
+					.withRecordSeparator("\r\n")
+					.parse(fileReader);
+
+
+
+			for (CSVRecord record : records) {
+
+				OfferStats offerStats = createOffer(record);
+
+				importedOffers.add(offerStats);
+
+			}
+		}
+
+		return importedOffers;
+	}
+
+
+	public static List<Path> listFiles(Path path) throws IOException {
+
+		List<Path> result;
+		try (Stream<Path> walk = Files.walk(path)) {
+			result = walk.filter(Files :: isRegularFile)
+					.collect(Collectors.toList());
+		}
+		return result;
+	}
 
 	//TODO @Scheduele()
 	@PostConstruct
 	private void populateAllStatsWithImportedStats() {
 
 		try {
-			this.allOffers = createCombinedListFromTwoCsvFiles(OFFER_DATA_FILE_PROTOMA, OFFER_DATA_FILE_MLT);
+			this.allOffers = importDataFromFolder();
 		} catch (ParseException | IOException e) {
 			System.out.println("Problem when updatingAllOffers: " + e.getMessage());
 			e.printStackTrace();
 		}
-	}
-
-	private ArrayList<OfferStats> createCombinedListFromTwoCsvFiles(String filepathOne, String filepathTwo) throws IOException, ParseException {
-		ArrayList<OfferStats> allOffers = new ArrayList<>();
-
-		ArrayList<OfferStats> fileOne = importDataFromCSV(filepathOne);
-		ArrayList<OfferStats> fileTwo = importDataFromCSV(filepathTwo);
-
-		allOffers.addAll(fileOne);
-		allOffers.addAll(fileTwo);
-
-		return allOffers;
-	}
-
-	private ArrayList<OfferStats> importDataFromCSV(String filepath) throws IOException, ParseException {
-
-		ArrayList<OfferStats> importedOffers = new ArrayList<>();
-
-		Reader fileReader = new FileReader(filepath, StandardCharsets.UTF_8);
-		Iterable<CSVRecord> records = CSVFormat.
-				newFormat(',')
-				.withQuote('"')
-				.withIgnoreEmptyLines(true)
-				.withNullString("")
-				.withRecordSeparator("\r\n")
-				.parse(fileReader);
-
-		for (CSVRecord record : records) {
-
-			OfferStats offerStats = createOffer(record);
-
-			importedOffers.add(offerStats);
-
-		}
-
-		return importedOffers;
 	}
 
 	private OfferStats createOffer(CSVRecord record) throws ParseException {
@@ -141,7 +157,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 		return offersCustomer;
 	}
-
 
 	public void saveObjectToCSV(OfferStats offerStats, String filepath) {
 

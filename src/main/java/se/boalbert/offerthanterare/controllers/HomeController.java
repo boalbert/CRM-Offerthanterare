@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import se.boalbert.offerthanterare.models.OfferStats;
 import se.boalbert.offerthanterare.services.OfferDataServiceImpl;
+import se.boalbert.offerthanterare.services.ReadWriteDataImpl;
 
 import java.util.Collections;
 import java.util.Comparator;

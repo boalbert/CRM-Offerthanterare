@@ -15,6 +15,7 @@ public class OfferStats {
 	private String regDate;
 	private String kommentar;
 	private long dateDiff;
+
 	public long getDateDiff() {
 		return dateDiff;
 	}
@@ -22,7 +23,6 @@ public class OfferStats {
 	public void setDateDiff(long dateDiff) {
 		this.dateDiff = dateDiff;
 	}
-
 
 	public int getOrderNr() {
 		return orderNr;

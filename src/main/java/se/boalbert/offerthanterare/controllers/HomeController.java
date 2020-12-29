@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import se.boalbert.offerthanterare.models.OfferStats;
+import se.boalbert.offerthanterare.models.Offer;
 import se.boalbert.offerthanterare.services.OfferDataServiceImpl;
 import se.boalbert.offerthanterare.services.ReadWriteDataImpl;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -21,18 +19,21 @@ public class HomeController {
 	@Autowired
 	OfferDataServiceImpl offerDataServiceImpl;
 
+	@Autowired
+	ReadWriteDataImpl readWriteDataImpl;
+
 	@GetMapping("/")
 	public String home(Model model) {
 
-		List<OfferStats> allOfferStats = offerDataServiceImpl.getAllOffers();
-		Collections.sort(allOfferStats, Comparator.comparingInt(OfferStats ::getChans).reversed());
-		model.addAttribute("offerStats", allOfferStats);
+		List<Offer> allOffers = offerDataServiceImpl.getAllOffersSortedByChance();
 
-		long amountOfOffers = allOfferStats.stream().map(OfferStats :: getOffertNamn).count();
-		model.addAttribute("countOffers", amountOfOffers);
+		model.addAttribute("offers", allOffers);
 
-		int valueOfOffers = (int) allOfferStats.stream().mapToDouble(OfferStats::getBelopp).sum();
-		model.addAttribute("valueOfOffers",valueOfOffers);
+		long counterOffers = allOffers.stream().map(Offer :: getOfferName).count();
+		model.addAttribute("countOffers", counterOffers);
+
+		int  sumOffers = (int) allOffers.stream().mapToDouble(Offer :: getOfferSum).sum();
+		model.addAttribute("sumOffers", sumOffers);
 
 		return "index";
 	}
@@ -40,23 +41,23 @@ public class HomeController {
 	@GetMapping("/update/{id}")
 	public String showUpdatePage(@PathVariable(value = "id") int id, Model model) {
 
-		OfferStats offerStats = offerDataServiceImpl.getOfferById(id);
+		Offer offer = offerDataServiceImpl.getOfferById(id);
 
 		// This offer object
-		model.addAttribute("offert", offerStats);
+		model.addAttribute("offer", offer);
 
 		// Other offers for this customer
-		model.addAttribute("offersCustomer", offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffers(), offerStats));
+		model.addAttribute("offersCustomer", offerDataServiceImpl.offersCustomer(offerDataServiceImpl.getAllOffers(), offer));
 
 		return "update";
 	}
 
 
 	@PostMapping("/updateOffer")
-	public String saveOffer(@ModelAttribute("offer") OfferStats offerStats) {
+	public String saveOffer(@ModelAttribute("offer") Offer offer) {
 
-		offerDataServiceImpl.updateObjectInAllOffersList(offerStats);
-		offerDataServiceImpl.saveObjectToCSV(offerStats, offerDataServiceImpl.checkObjectCompanyBeforeSavingToArrayList(offerStats));
+		offerDataServiceImpl.updateObjectInAllOffersList(offer);
+		readWriteDataImpl.saveObjectToCSV(offer, offerDataServiceImpl.findCompany(offer));
 
 		return "redirect:/";
 	}

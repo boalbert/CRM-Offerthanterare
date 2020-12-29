@@ -1,23 +1,21 @@
 package se.boalbert.offerthanterare.services;
 
-import se.boalbert.offerthanterare.models.OfferStats;
+import se.boalbert.offerthanterare.models.Offer;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface OfferDataService {
 
-	List<OfferStats> getAllOffers();
+	List<Offer> getAllOffers();
 
 //	void importOfferData() throws IOException;
 
-	OfferStats getOfferById(int id);
+	Offer getOfferById(int id);
 
 //	void saveArrayListToCsv(ArrayList<OfferStats> arrayList, String filepath);
 
 
-	void updateObjectInAllOffersList(OfferStats offerStats);
+	void updateObjectInAllOffersList(Offer offer);
 
 
 }

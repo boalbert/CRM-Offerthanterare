@@ -4,7 +4,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
-import se.boalbert.offerthanterare.models.OfferStats;
+import se.boalbert.offerthanterare.models.Offer;
 
 import javax.annotation.PostConstruct;
 import java.io.FileReader;
@@ -17,9 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,99 +25,51 @@ import java.util.stream.Stream;
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
 
-	String offerDirectory = "src/main/java/se/boalbert/offerthanterare/datasource/import";
-
-
-
 	//TODO Update this to env variables before deploying
 	private final String OFFER_DATA_UPDATES_MLT =           "src/main/java/se/boalbert/offerthanterare/datasource/MLT_UPDATES.CSV";
 	private final String OFFER_DATA_UPDATES_PROTOMA =       "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_UPDATES.CSV";
-	private List<OfferStats> allOffers = new ArrayList<>();
 
-	public ArrayList<OfferStats> importDataFromFolder() throws IOException, ParseException {
-
-		Path filePath = Paths.get(offerDirectory);
-		List<Path> listOffers = listFiles(filePath);
-
-		ArrayList<OfferStats> importedOffers = new ArrayList<>();
-
-		for (Path path : listOffers) {
-
-			String absolutPath = String.valueOf(path.toAbsolutePath());
-
-			Reader fileReader = new FileReader(absolutPath, StandardCharsets.UTF_8);
-			Iterable<CSVRecord> records = CSVFormat.
-					newFormat(',')
-					.withQuote('"')
-					.withIgnoreEmptyLines(true)
-					.withNullString("")
-					.withRecordSeparator("\r\n")
-					.parse(fileReader);
-
-
-
-			for (CSVRecord record : records) {
-
-				OfferStats offerStats = createOffer(record);
-
-				importedOffers.add(offerStats);
-
-			}
-		}
-
-		return importedOffers;
-	}
-
-
-	public static List<Path> listFiles(Path path) throws IOException {
-
-		List<Path> result;
-		try (Stream<Path> walk = Files.walk(path)) {
-			result = walk.filter(Files :: isRegularFile)
-					.collect(Collectors.toList());
-		}
-		return result;
-	}
+	private List<Offer> allOffers = new ArrayList<>();
 
 	//TODO @Scheduele()
 	@PostConstruct
 	private void populateAllStatsWithImportedStats() {
 
 		try {
-			this.allOffers = importDataFromFolder();
+			this.allOffers = ReadWriteDataImpl.importDataFromFolder();
 		} catch (ParseException | IOException e) {
 			System.out.println("Problem when updatingAllOffers: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
-	private OfferStats createOffer(CSVRecord record) throws ParseException {
+	public Offer createOffer(CSVRecord record) throws ParseException {
 
 		/*
 		Structure of CSV-file to import:
 		"KB, "Ordernr","Företagskod","Företag","Namn","Säljare", "Status", "Chans","Belopp","Ändrad datum", "Reg datum","Kommentar"
 		*/
 
-		OfferStats offerStats = new OfferStats();
+		Offer offer = new Offer();
 
-		offerStats.setKoncernBolag(record.get(0));
-		offerStats.setOrderNr(Integer.parseInt(record.get(1)));
-		offerStats.setForetagKod(Integer.parseInt(record.get(2)));
-		offerStats.setForetagNamn(record.get(3));
-		offerStats.setOffertNamn(record.get(4));
-		offerStats.setSaljare(record.get(5));
-		if (record.get(6) != null) offerStats.setStatus(Integer.parseInt(record.get(6)));
-		if (record.get(7) != null) offerStats.setChans(Integer.parseInt(record.get(7)));
-		offerStats.setBelopp(Double.parseDouble(record.get(8)));
-		offerStats.setUpdateDate(record.get(9));
-		offerStats.setRegDate(record.get(10));
-		offerStats.setKommentar(record.get(11));
-		offerStats.setDateDiff(calculateDateDiff(offerStats.getRegDate(), offerStats.getUpdateDate()));
+		offer.setCompany(record.get(0));
+		offer.setOfferNo(Integer.parseInt(record.get(1)));
+		offer.setCustomerNo(Integer.parseInt(record.get(2)));
+		offer.setCustomerName(record.get(3));
+		offer.setOfferName(record.get(4));
+		offer.setSalesPerson(record.get(5));
+		if (record.get(6) != null) offer.setStatus(Integer.parseInt(record.get(6)));
+		if (record.get(7) != null) offer.setChance(Integer.parseInt(record.get(7)));
+		offer.setOfferSum(Double.parseDouble(record.get(8)));
+		offer.setDateUpdated(record.get(9));
+		offer.setDateCreated(record.get(10));
+		offer.setComment(record.get(11));
+		offer.setDateDiff(calcDateDiff(offer.getDateCreated(), offer.getDateUpdated()));
 
-		return offerStats;
+		return offer;
 	}
 
-	public long calculateDateDiff(String regDate, String updateDate) throws ParseException {
+	public long calcDateDiff(String regDate, String updateDate) throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -136,21 +86,24 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	}
 
-	public String checkObjectCompanyBeforeSavingToArrayList(OfferStats offerStats) {
-		if (offerStats.getKoncernBolag().equalsIgnoreCase("MLT")) {
+	public String findCompany(Offer offer) {
+		if (offer.getCompany().equalsIgnoreCase("MLT AB")) {
+			System.out.println("Saving to: " + OFFER_DATA_UPDATES_MLT);
 			return OFFER_DATA_UPDATES_MLT;
-		} else if (offerStats.getKoncernBolag().equalsIgnoreCase("Protoma")) {
+		} else if (offer.getCompany().equalsIgnoreCase("Protoma")) {
+			System.out.println("Saving to: " + OFFER_DATA_UPDATES_PROTOMA);
 			return OFFER_DATA_UPDATES_PROTOMA;
 		}
+		System.out.println("Failed, saving to null");
 		return null;
 	}
 
-	public List<OfferStats> offersCustomer(List<OfferStats> allOffers, OfferStats offerStats) {
+	public List<Offer> offersCustomer(List<Offer> allOffers, Offer offerStats) {
 
-		List<OfferStats> offersCustomer = new ArrayList<>();
+		List<Offer> offersCustomer = new ArrayList<>();
 
-		for (OfferStats offer : allOffers) {
-			if (offer.getForetagNamn().equalsIgnoreCase(offerStats.getForetagNamn()) && offer.getOrderNr() != offerStats.getOrderNr()) {
+		for (Offer offer : allOffers) {
+			if (offer.getCustomerName().equalsIgnoreCase(offerStats.getCustomerName()) && offer.getOfferNo() != offerStats.getOfferNo()) {
 				offersCustomer.add(offer);
 			}
 		}
@@ -158,30 +111,20 @@ public class OfferDataServiceImpl implements OfferDataService {
 		return offersCustomer;
 	}
 
-	public void saveObjectToCSV(OfferStats offerStats, String filepath) {
-
-		String head = "<HEAD>";
-		int orderNr = offerStats.getOrderNr();
-		int status = offerStats.getStatus();
-		int chans = offerStats.getChans();
-
-
-		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filepath, StandardCharsets.UTF_8, true), CSVFormat.EXCEL)) {
-			printer.printRecord(head, orderNr,status,chans);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
+	public List<Offer> getAllOffersSortedByChance() {
+		Collections.sort(allOffers, Comparator.comparingInt(Offer :: getChance).reversed());
+		return allOffers;
 	}
 
-	public List<OfferStats> getAllOffers() {
+	public List<Offer> getAllOffers() {
 		return allOffers;
 	}
 
 	@Override
-	public OfferStats getOfferById(int id) {
+	public Offer getOfferById(int id) {
 
-		for (OfferStats allOffer : allOffers) {
-			if (allOffer.getOrderNr() == id) {
+		for (Offer allOffer : allOffers) {
+			if (allOffer.getOfferNo() == id) {
 				System.out.println("Offer found: " + allOffer.toString());
 				return allOffer;
 			}
@@ -190,18 +133,18 @@ public class OfferDataServiceImpl implements OfferDataService {
 	}
 
 	@Override
-	public void updateObjectInAllOffersList(OfferStats offerStats) {
-		int ordernr = offerStats.getOrderNr();
+	public void updateObjectInAllOffersList(Offer offerStats) {
+		int ordernr = offerStats.getOfferNo();
 		int status = offerStats.getStatus();
-		int chans = offerStats.getChans();
-		String kommentar = offerStats.getKommentar();
+		int chans = offerStats.getChance();
+		String kommentar = offerStats.getComment();
 
-		for (OfferStats offer : allOffers) {
+		for (Offer offer : allOffers) {
 
-			if (offer.getOrderNr() == ordernr) {
+			if (offer.getOfferNo() == ordernr) {
 				offer.setStatus(status);
-				offer.setChans(chans);
-				offer.setKommentar(kommentar);
+				offer.setChance(chans);
+				offer.setComment(kommentar);
 			}
 		}
 	}

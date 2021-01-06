@@ -22,6 +22,7 @@
         <div class="col-9">
             <div class="col m-2">
                 <h1 class="display-3">Offerthanterare</h1>
+                <p class="lead"><kbd>BETA</kbd></p>
                 <p class="lead">Filtrera på kund, säljare, belopp, status, etc.</p>
 
             </div>
@@ -39,8 +40,7 @@
             <div class="card m-2">
                 <div class="card-body">
                     <h5 class="card-title">Information</h5>
-                    <p class="card-text">Data hämtad från MLT AB och Protoma.
-                    </p>
+                    <p class="card-text">Data hämtad från MLT AB, Runtime och Protoma.</p>
                     <p class="card-text">
                         Klicka på <kbd>MER</kbd> för att se detaljer och justera din offert. Du ser även andra aktiva
                         offerter på kund.
@@ -75,6 +75,8 @@
                         + #numbers.formatDecimal(sumOffers, 1, 'DEFAULT', 0, 'DEFAULT') + ' SEK'}">
                         Här visas totalt offertvärde.
                     </p>
+                    <p class="card-text" th:text="${'Data exporterad från Pyramid: ' + date}">Här visas antal aktiva
+                        offerter.</p>
 
                 </div>
             </div>
@@ -254,5 +256,22 @@
     })(document);
 
 </script>
+
+<!--<script>-->
+<!--    // var cell_value = $(this).html();-->
+<!--    var cell = $('td');-->
+
+<!--    cell.each(function() {-->
+<!--        var cell_value = $(this).html();-->
+<!--        if ((cell_value >= 0) && (cell_value <=29)) {-->
+<!--            $(this).css({'background' : '#FF0000'});-->
+<!--        } else if ((cell_value >= 30) && (cell_value <=59)) {-->
+<!--            $(this).css({'background' : '#0066CC'});-->
+<!--        } else if (cell_value >= 60) {-->
+<!--            $(this).css({'background' : '#00CC66'});-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
 </body>
 </html>

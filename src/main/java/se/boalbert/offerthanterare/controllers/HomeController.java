@@ -35,6 +35,8 @@ public class HomeController {
 		int  sumOffers = (int) allOffers.stream().mapToDouble(Offer :: getOfferSum).sum();
 		model.addAttribute("sumOffers", sumOffers);
 
+		model.addAttribute("date", offerDataServiceImpl.getDateUpdated());
+
 		return "index";
 	}
 

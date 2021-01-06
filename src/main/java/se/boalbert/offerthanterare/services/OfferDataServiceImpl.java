@@ -1,46 +1,57 @@
 package se.boalbert.offerthanterare.services;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import se.boalbert.offerthanterare.models.Offer;
 
 import javax.annotation.PostConstruct;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
 
-	//TODO Update this to env variables before deploying
-	private final String OFFER_DATA_UPDATES_MLT =           "src/main/java/se/boalbert/offerthanterare/datasource/MLT_UPDATES.CSV";
-	private final String OFFER_DATA_UPDATES_PROTOMA =       "src/main/java/se/boalbert/offerthanterare/datasource/PROTOMA_UPDATES.CSV";
+
+	@Value("${pathdir.import}")
+	private String offerdir;
+	@Value("${pathdir.export}")
+	private String EXPORT_UPDATES_DIR;
+
+	private final String FILENAME_MLT = "\\MLT_UPDATES.CSV";
+	private final String FILENAME_PROTOMA = "\\PROTOMA_UPDATES.CSV";
+	private final String FILENAME_RUNTIME = "\\RUNTIME_UPDATES.CSV";
+
+	private String dateUpdated = date();
+
+	public String getDateUpdated() {
+		return dateUpdated;
+	}
 
 	private List<Offer> allOffers = new ArrayList<>();
 
-	//TODO @Scheduele()
 	@PostConstruct
+//	@Scheduled(cron = "*/5 * * * *")
 	private void populateAllStatsWithImportedStats() {
 
+		System.out.println("Trying to run Cron-job: ");
+
 		try {
-			this.allOffers = ReadWriteDataImpl.importDataFromFolder();
+			System.out.println("Running cron-job.");
+			this.allOffers = ReadWriteDataImpl.importDataFromFolder(offerdir);
 		} catch (ParseException | IOException e) {
+			System.out.println("Failed to run Cron-job");
 			System.out.println("Problem when updatingAllOffers: " + e.getMessage());
 			e.printStackTrace();
 		}
+
+		this.dateUpdated = date();
 	}
 
 	public Offer createOffer(CSVRecord record) throws ParseException {
@@ -88,11 +99,15 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	public String findCompany(Offer offer) {
 		if (offer.getCompany().equalsIgnoreCase("MLT AB")) {
-			System.out.println("Saving to: " + OFFER_DATA_UPDATES_MLT);
-			return OFFER_DATA_UPDATES_MLT;
+			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_MLT);
+			return EXPORT_UPDATES_DIR + FILENAME_MLT;
 		} else if (offer.getCompany().equalsIgnoreCase("Protoma")) {
-			System.out.println("Saving to: " + OFFER_DATA_UPDATES_PROTOMA);
-			return OFFER_DATA_UPDATES_PROTOMA;
+			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_PROTOMA);
+			return EXPORT_UPDATES_DIR + FILENAME_PROTOMA;
+		}
+		else if (offer.getCompany().equalsIgnoreCase("Runtime")) {
+			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_RUNTIME);
+			return EXPORT_UPDATES_DIR + FILENAME_RUNTIME;
 		}
 		System.out.println("Failed, saving to null");
 		return null;
@@ -147,5 +162,13 @@ public class OfferDataServiceImpl implements OfferDataService {
 				offer.setComment(kommentar);
 			}
 		}
+	}
+
+	public String date() {
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM HH:mm");
+		LocalDateTime now = LocalDateTime.now();
+
+		return now.format(dtf).toString();
 	}
 }

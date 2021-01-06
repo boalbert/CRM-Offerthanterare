@@ -25,9 +25,7 @@ public class ReadWriteDataImpl implements ReadWriteData {
 
 	private static final OfferDataServiceImpl offerDataServiceImpl = new OfferDataServiceImpl();
 
-	private final static String offerDirectory = "\\\\PROTSRV6.intra.protoma.se\\Pyramiddok\\PYMLT\\EXPORT\\DATA\\OFFERT";
-
-	public static ArrayList<Offer> importDataFromFolder() throws IOException, ParseException {
+	public static ArrayList<Offer> importDataFromFolder(String offerDirectory) throws IOException, ParseException {
 
 		Path filePath = Paths.get(offerDirectory);
 		List<Path> listFiles = listFiles(filePath);

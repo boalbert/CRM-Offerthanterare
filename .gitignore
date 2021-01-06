@@ -10,6 +10,8 @@ Offerthanterare.iml
 # Input/Output data
 src/main/java/se/boalbert/offerthanterare/datasource
 
+# Application properties
+src/main/resources/application.properties
 
 ### STS ###
 .apt_generated

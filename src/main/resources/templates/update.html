@@ -23,7 +23,6 @@
                 <h1 class="display-3">Offerthanterare</h1>
                 <p class="lead"><kbd>BETA</kbd></p>
                 <p class="lead">Uppdatera offert</p>
-
             </div>
         </div>
         <div class="col-1">
@@ -111,7 +110,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="inputReferens">Er Referens</label>
                     <div class="col-sm-10">
-                        <input class="form-control" disabled id="inputReferens">
+                        <input class="form-control" id="inputReferens" th:placeholder="*{customerContact}">
                     </div>
                 </div>
 
@@ -119,7 +118,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="inputPurchaseOrder">Ert ordernr</label>
                     <div class="col-sm-10">
-                        <input class="form-control" disabled id="inputPurchaseOrder">
+                        <input class="form-control" id="inputPurchaseOrder" th:placeholder="*{purchaseOrder}">
                     </div>
                 </div>
 
@@ -189,6 +188,8 @@
                 <input placeholder="kundId" th:field="*{customerName}" type="hidden">
                 <input placeholder="projektNamn" th:field="*{offerName}" type="hidden">
                 <input placeholder="Säljare" th:field="*{salesPerson}" type="hidden">
+                <input placeholder="Säljare" th:field="*{customerContact}" type="hidden">
+                <input placeholder="Säljare" th:field="*{purchaseOrder}" type="hidden">
                 <input placeholder="belopp" th:field="*{offerSum}" type="hidden">
                 <input placeholder="updateDate" th:field="*{dateUpdated}" type="hidden">
                 <input placeholder="RegDatum" th:field="*{{dateCreated}}" type="hidden">

@@ -8,6 +8,8 @@ public class Offer {
 	private String customerName;
 	private String offerName;
 	private String salesPerson;
+	private String customerContact;
+	private String purchaseOrder;
 	private int status;
 	private int chance;
 	private double offerSum;
@@ -25,6 +27,8 @@ public class Offer {
 				", customerName='" + customerName + '\'' +
 				", offerName='" + offerName + '\'' +
 				", salesPerson='" + salesPerson + '\'' +
+				", customerContact='" + customerContact + '\'' +
+				", purchaseOrder='" + purchaseOrder + '\'' +
 				", status=" + status +
 				", chance=" + chance +
 				", offerSum=" + offerSum +
@@ -33,6 +37,22 @@ public class Offer {
 				", comment='" + comment + '\'' +
 				", dateDiff=" + dateDiff +
 				'}';
+	}
+
+	public String getCustomerContact() {
+		return customerContact;
+	}
+
+	public void setCustomerContact(String customerContact) {
+		this.customerContact = customerContact;
+	}
+
+	public String getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(String purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
 	}
 
 	public long getDateDiff() {

@@ -58,7 +58,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 		/*
 		Structure of CSV-file to import:
-		"KB, "Ordernr","Företagskod","Företag","Namn","Säljare", "Status", "Chans","Belopp","Ändrad datum", "Reg datum","Kommentar"
+		"KB, "Ordernr","Företagskod","Företag","Namn","Säljare", "Er referens", "Ert ordernr", "Status", "Chans","Belopp","Ändrad datum", "Reg datum","Kommentar"
 		*/
 
 		Offer offer = new Offer();
@@ -69,12 +69,14 @@ public class OfferDataServiceImpl implements OfferDataService {
 		offer.setCustomerName(record.get(3));
 		offer.setOfferName(record.get(4));
 		offer.setSalesPerson(record.get(5));
-		if (record.get(6) != null) offer.setStatus(Integer.parseInt(record.get(6)));
-		if (record.get(7) != null) offer.setChance(Integer.parseInt(record.get(7)));
-		offer.setOfferSum(Double.parseDouble(record.get(8)));
-		offer.setDateUpdated(record.get(9));
-		offer.setDateCreated(record.get(10));
-		offer.setComment(record.get(11));
+		offer.setCustomerContact(record.get(6));
+		offer.setPurchaseOrder(record.get(7));
+		if (record.get(8) != null) offer.setStatus(Integer.parseInt(record.get(8)));
+		if (record.get(9) != null) offer.setChance(Integer.parseInt(record.get(9)));
+		offer.setOfferSum(Double.parseDouble(record.get(10)));
+		offer.setDateUpdated(record.get(11));
+		offer.setDateCreated(record.get(12));
+		offer.setComment(record.get(13));
 		offer.setDateDiff(calcDateDiff(offer.getDateCreated(), offer.getDateUpdated()));
 
 		return offer;

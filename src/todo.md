@@ -8,10 +8,10 @@
 
 ### Mina idéer
 * Lägg in mer info under "Info/Uppdatera", lägg till detta i klass OffertStats
-    * Er referens
-    * Ert ordernr
     * Avdelning
-    * Done - Liten tabell med alla andra offerter på kunden
+    DONE -> * Er referens 
+    DONE -> * Ert ordernr
+    DONE -> * Liten tabell med alla andra offerter på kunden
 
 ### Etc
 * Glöm ej lägga in PTC 850 som schemalagt, krävs för att import ska fungera

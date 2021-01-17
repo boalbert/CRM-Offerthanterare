@@ -28,6 +28,8 @@ public class OfferDataServiceImpl implements OfferDataService {
 	private String offerdir;
 	@Value("${pathdir.export}")
 	private String EXPORT_UPDATES_DIR;
+	@Value("${log.this}")
+	private String logFromExternalFile;
 
 	private final String FILENAME_MLT = "\\MLT_UPDATES.CSV";
 	private final String FILENAME_PROTOMA = "\\PROTOMA_UPDATES.CSV";
@@ -48,6 +50,8 @@ public class OfferDataServiceImpl implements OfferDataService {
 	public void populateAllStatsWithImportedStats() {
 
 		System.out.println("Trying to run Cron-job: ");
+
+		logger.info(logFromExternalFile);
 
 		try {
 			logger.info("Looking for .csv import file in " + offerdir);

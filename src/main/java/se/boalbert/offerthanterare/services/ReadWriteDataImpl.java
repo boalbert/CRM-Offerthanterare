@@ -3,6 +3,9 @@ package se.boalbert.offerthanterare.services;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import se.boalbert.offerthanterare.models.Offer;
 
@@ -23,11 +26,17 @@ import java.util.stream.Stream;
 @Service
 public class ReadWriteDataImpl {
 
+	static Logger logger = LoggerFactory.getLogger(ReadWriteDataImpl.class);
+
 	private static final OfferDataServiceImpl offerDataServiceImpl = new OfferDataServiceImpl();
 
 	public static ArrayList<Offer> importDataFromFolder(String offerDirectory) throws IOException, ParseException {
 
+
 		Path filePath = Paths.get(offerDirectory);
+
+		logger.trace("Looking for offers in: ");
+		logger.trace(filePath.toString());
 		List<Path> listFiles = listFiles(filePath);
 
 		ArrayList<Offer> importedOffers = new ArrayList<>();
@@ -35,6 +44,8 @@ public class ReadWriteDataImpl {
 		for (Path file : listFiles) {
 
 			String absolutPath = String.valueOf(file.toAbsolutePath());
+			logger.trace("Absolute filepath to offer files: ");
+			logger.trace(absolutPath);
 
 			Reader fileReader = new FileReader(absolutPath, StandardCharsets.UTF_8);
 			Iterable<CSVRecord> recordsOffers = CSVFormat.

@@ -52,10 +52,10 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
+        <finalName>offert</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

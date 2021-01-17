@@ -69,12 +69,14 @@ public class ReadWriteDataImpl {
 	public void saveObjectToCSV(Offer offer, String filepath) {
 
 		String head = "<HEAD>";
-		int orderNr = offer.getOfferNo();
+		int offerNo = offer.getOfferNo();
 		int status = offer.getStatus();
-		int chans = offer.getChance();
+		int chance = offer.getChance();
+		String customerContact = offer.getCustomerContact();
+		String purchaseOrder = offer.getPurchaseOrder();
 
 		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filepath, StandardCharsets.UTF_8, true), CSVFormat.EXCEL)) {
-			printer.printRecord(head, orderNr,status,chans);
+			printer.printRecord(head, offerNo,status,chance, customerContact, purchaseOrder);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

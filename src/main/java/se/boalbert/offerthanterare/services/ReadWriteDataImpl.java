@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-public class ReadWriteDataImpl implements ReadWriteData {
+public class ReadWriteDataImpl {
 
 	private static final OfferDataServiceImpl offerDataServiceImpl = new OfferDataServiceImpl();
 

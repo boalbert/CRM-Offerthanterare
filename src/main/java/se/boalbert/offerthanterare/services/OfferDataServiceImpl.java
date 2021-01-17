@@ -1,9 +1,12 @@
 package se.boalbert.offerthanterare.services;
 
 import org.apache.commons.csv.CSVRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import se.boalbert.offerthanterare.controllers.HomeController;
 import se.boalbert.offerthanterare.models.Offer;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class OfferDataServiceImpl implements OfferDataService {
 
+	Logger logger = LoggerFactory.getLogger(OfferDataServiceImpl.class);
+
 
 	@Value("${pathdir.import}")
 	private String offerdir;
@@ -30,30 +35,33 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	private String dateUpdated = date();
 
+	@Override
 	public String getDateUpdated() {
 		return dateUpdated;
 	}
 
 	private List<Offer> allOffers = new ArrayList<>();
 
+	@Override
 	@PostConstruct
 //	@Scheduled(cron = "*/5 * * * *")
-	private void populateAllStatsWithImportedStats() {
+	public void populateAllStatsWithImportedStats() {
 
 		System.out.println("Trying to run Cron-job: ");
 
 		try {
+			logger.info("Looking for .csv import file in " + offerdir);
 			System.out.println("Running cron-job.");
 			this.allOffers = ReadWriteDataImpl.importDataFromFolder(offerdir);
 		} catch (ParseException | IOException e) {
-			System.out.println("Failed to run Cron-job");
-			System.out.println("Problem when updatingAllOffers: " + e.getMessage());
-			e.printStackTrace();
+			logger.error(e.getMessage());
+			logger.error(Arrays.toString(e.getStackTrace()));
 		}
 
 		this.dateUpdated = date();
 	}
 
+	@Override
 	public Offer createOffer(CSVRecord record) throws ParseException {
 
 		/*
@@ -82,6 +90,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 		return offer;
 	}
 
+	@Override
 	public long calcDateDiff(String regDate, String updateDate) throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -99,6 +108,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	}
 
+	@Override
 	public String findCompany(Offer offer) {
 		if (offer.getCompany().equalsIgnoreCase("MLT AB")) {
 			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_MLT);
@@ -115,6 +125,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 		return null;
 	}
 
+	@Override
 	public List<Offer> offersCustomer(List<Offer> allOffers, Offer offerStats) {
 
 		List<Offer> offersCustomer = new ArrayList<>();
@@ -128,14 +139,17 @@ public class OfferDataServiceImpl implements OfferDataService {
 		return offersCustomer;
 	}
 
+	@Override
 	public List<Offer> getAllOffersSortedByChance() {
 		Collections.sort(allOffers, Comparator.comparingInt(Offer :: getChance).reversed());
 		return allOffers;
 	}
 
+	@Override
 	public List<Offer> getAllOffers() {
 		return allOffers;
 	}
+
 
 	@Override
 	public Offer getOfferById(int id) {
@@ -148,6 +162,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 		}
 		return null;
 	}
+
 
 	@Override
 	public void updateObjectInAllOffersList(Offer offerStats) {
@@ -166,6 +181,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 		}
 	}
 
+	@Override
 	public String date() {
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM HH:mm");

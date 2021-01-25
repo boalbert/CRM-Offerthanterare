@@ -4,9 +4,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import se.boalbert.offerthanterare.controllers.HomeController;
 import se.boalbert.offerthanterare.models.Offer;
 
 import javax.annotation.PostConstruct;
@@ -23,13 +21,10 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	Logger logger = LoggerFactory.getLogger(OfferDataServiceImpl.class);
 
-
 	@Value("${pathdir.import}")
-	private String offerdir;
+	private String OFFER_DIR;
 	@Value("${pathdir.export}")
 	private String EXPORT_UPDATES_DIR;
-	@Value("${log.this}")
-	private String logFromExternalFile;
 
 	private final String FILENAME_MLT = "\\MLT_UPDATES.CSV";
 	private final String FILENAME_PROTOMA = "\\PROTOMA_UPDATES.CSV";
@@ -49,14 +44,9 @@ public class OfferDataServiceImpl implements OfferDataService {
 //	@Scheduled(cron = "*/5 * * * *")
 	public void populateAllStatsWithImportedStats() {
 
-		System.out.println("Trying to run Cron-job: ");
-
-		logger.info(logFromExternalFile);
-
 		try {
-			logger.info("Looking for .csv import file in " + offerdir);
-			System.out.println("Running cron-job.");
-			this.allOffers = ReadWriteDataImpl.importDataFromFolder(offerdir);
+			logger.info("Looking for .csv import file in " + OFFER_DIR);
+			this.allOffers = ReadWriteDataImpl.importDataFromFolder(OFFER_DIR);
 		} catch (ParseException | IOException e) {
 			logger.error(e.getMessage());
 			logger.error(Arrays.toString(e.getStackTrace()));
@@ -160,7 +150,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 		for (Offer allOffer : allOffers) {
 			if (allOffer.getOfferNo() == id) {
-				System.out.println("Offer found: " + allOffer.toString());
+
 				return allOffer;
 			}
 		}
@@ -191,6 +181,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM HH:mm");
 		LocalDateTime now = LocalDateTime.now();
 
-		return now.format(dtf).toString();
+		return now.format(dtf);
 	}
 }

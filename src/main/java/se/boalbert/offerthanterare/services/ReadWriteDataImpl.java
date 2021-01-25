@@ -5,7 +5,6 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import se.boalbert.offerthanterare.models.Offer;
 
@@ -31,7 +30,6 @@ public class ReadWriteDataImpl {
 	private static final OfferDataServiceImpl offerDataServiceImpl = new OfferDataServiceImpl();
 
 	public static ArrayList<Offer> importDataFromFolder(String offerDirectory) throws IOException, ParseException {
-
 
 		Path filePath = Paths.get(offerDirectory);
 
@@ -87,11 +85,9 @@ public class ReadWriteDataImpl {
 		String purchaseOrder = offer.getPurchaseOrder();
 
 		try (CSVPrinter printer = new CSVPrinter(new FileWriter(filepath, StandardCharsets.UTF_8, true), CSVFormat.EXCEL)) {
-			printer.printRecord(head, offerNo,status,chance, customerContact, purchaseOrder);
+			printer.printRecord(head, offerNo, status, chance, customerContact, purchaseOrder);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
-
-
 }

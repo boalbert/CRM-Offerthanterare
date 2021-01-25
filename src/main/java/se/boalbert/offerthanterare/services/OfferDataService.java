@@ -10,9 +10,6 @@ import java.util.List;
 public interface OfferDataService {
 	String getDateUpdated();
 
-//	@PostConstruct
-//	@Scheduled(cron = "*/5 * * * *")
-
 	void populateAllStatsWithImportedStats();
 
 	Offer createOffer(CSVRecord record) throws ParseException;

@@ -26,16 +26,9 @@ public class Offer {
 				", customerNo=" + customerNo +
 				", customerName='" + customerName + '\'' +
 				", offerName='" + offerName + '\'' +
-				", salesPerson='" + salesPerson + '\'' +
-				", customerContact='" + customerContact + '\'' +
-				", purchaseOrder='" + purchaseOrder + '\'' +
 				", status=" + status +
 				", chance=" + chance +
-				", offerSum=" + offerSum +
 				", dateUpdated='" + dateUpdated + '\'' +
-				", dateCreated='" + dateCreated + '\'' +
-				", comment='" + comment + '\'' +
-				", dateDiff=" + dateDiff +
 				'}';
 	}
 

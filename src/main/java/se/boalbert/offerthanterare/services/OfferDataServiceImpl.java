@@ -4,6 +4,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import se.boalbert.offerthanterare.models.Offer;
 
@@ -11,6 +12,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -26,11 +28,14 @@ public class OfferDataServiceImpl implements OfferDataService {
 	@Value("${pathdir.export}")
 	private String EXPORT_UPDATES_DIR;
 
-	private final String FILENAME_MLT = "\\MLT_UPDATES.CSV";
-	private final String FILENAME_PROTOMA = "\\PROTOMA_UPDATES.CSV";
-	private final String FILENAME_RUNTIME = "\\RUNTIME_UPDATES.CSV";
+	@Value("${file.export.mlt}")
+	private String FILENAME_MLT;
+	@Value("${file.export.protoma}")
+	private String FILENAME_PROTOMA;
+	@Value("${file.export.runtime}")
+	private String FILENAME_RUNTIME;
 
-	private String dateUpdated = date();
+	private String dateUpdated = null;
 
 	@Override
 	public String getDateUpdated() {
@@ -39,20 +44,23 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	private List<Offer> allOffers = new ArrayList<>();
 
+
 	@Override
 	@PostConstruct
-//	@Scheduled(cron = "*/5 * * * *")
+	@Scheduled(cron = "0 10 6,10,14,18 * * *")
 	public void populateAllStatsWithImportedStats() {
-
+		logger.info("Trying to run running schedueled import");
+		logger.info("0 10 6,10,14,18 * * *");
 		try {
 			logger.info("Looking for .csv import file in " + OFFER_DIR);
 			this.allOffers = ReadWriteDataImpl.importDataFromFolder(OFFER_DIR);
+			logger.info("Imported: " + this.allOffers.size() + " offers.");
 		} catch (ParseException | IOException e) {
 			logger.error(e.getMessage());
 			logger.error(Arrays.toString(e.getStackTrace()));
 		}
 
-		this.dateUpdated = date();
+		this.dateUpdated = LocalDate.now().toString();
 	}
 
 	@Override
@@ -105,17 +113,22 @@ public class OfferDataServiceImpl implements OfferDataService {
 	@Override
 	public String findCompany(Offer offer) {
 		if (offer.getCompany().equalsIgnoreCase("MLT AB")) {
-			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_MLT);
+			logger.info("Saving: " + offer.toString());
+			logger.info("Location: " + EXPORT_UPDATES_DIR + FILENAME_MLT);
 			return EXPORT_UPDATES_DIR + FILENAME_MLT;
 		} else if (offer.getCompany().equalsIgnoreCase("Protoma")) {
-			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_PROTOMA);
+			logger.info("Saving: " + offer.toString());
+			logger.info("Location: " + EXPORT_UPDATES_DIR + FILENAME_PROTOMA);
 			return EXPORT_UPDATES_DIR + FILENAME_PROTOMA;
 		}
 		else if (offer.getCompany().equalsIgnoreCase("Runtime")) {
-			System.out.println("Saving to: " + EXPORT_UPDATES_DIR + FILENAME_RUNTIME);
+			logger.info("Saving: " + offer.toString());
+			logger.info("Location: " + EXPORT_UPDATES_DIR + FILENAME_RUNTIME);
 			return EXPORT_UPDATES_DIR + FILENAME_RUNTIME;
+		} else {
+			logger.info("Failed, saving to null");
 		}
-		System.out.println("Failed, saving to null");
+
 		return null;
 	}
 

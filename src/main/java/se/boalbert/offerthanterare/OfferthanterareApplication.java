@@ -4,15 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
 public class OfferthanterareApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

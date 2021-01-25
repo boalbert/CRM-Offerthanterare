@@ -2586,3 +2586,700 @@ Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for l
 2021-01-25 14:07:00,500 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
 2021-01-25 14:07:01,236 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplicationTests in 5.67 seconds (JVM running for 7.957)
 2021-01-25 14:07:02,123 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-25 14:26:35,368 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 2260 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:26:35,376 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:26:35,377 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:26:37,157 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:26:37,170 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:26:37,170 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:26:37,171 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:26:37,268 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:26:37,269 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1745 ms
+2021-01-25 14:26:37,367 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:26:37,368 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:26:37,368 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:26:37,413 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:26:37,414 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:26:37,511 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:26:37,511 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 14:26:37,530 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+2021-01-25 14:26:37,535 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2021-01-25 14:26:37,552 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-01-25 14:26:37,595 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:608)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
+	at se.boalbert.offerthanterare.OfferthanterareApplication.main(OfferthanterareApplication.java:20)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:429)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1780)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1367)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 20 common frames omitted
+Caused by: java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.getNextRecord(CSVParser.java:145)
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.hasNext(CSVParser.java:155)
+	at se.boalbert.offerthanterare.services.ReadWriteDataImpl.importDataFromFolder(ReadWriteDataImpl.java:57)
+	at se.boalbert.offerthanterare.services.OfferDataServiceImpl.populateAllStatsWithImportedStats(OfferDataServiceImpl.java:54)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 32 common frames omitted
+Caused by: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.apache.commons.csv.Lexer.parseEncapsulatedToken(Lexer.java:281)
+	at org.apache.commons.csv.Lexer.nextToken(Lexer.java:158)
+	at org.apache.commons.csv.CSVParser.nextRecord(CSVParser.java:674)
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.getNextRecord(CSVParser.java:142)
+	... 42 common frames omitted
+2021-01-25 14:27:28,411 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 17940 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:27:28,416 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:27:28,417 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:27:29,841 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:27:29,856 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:27:29,857 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:27:29,858 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:27:29,960 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:27:29,961 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1423 ms
+2021-01-25 14:27:30,033 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:27:30,034 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:27:30,034 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:27:30,097 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:27:30,097 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:27:30,215 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:27:30,216 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 14:27:30,239 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+2021-01-25 14:27:30,242 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2021-01-25 14:27:30,255 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-01-25 14:27:30,284 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:608)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
+	at se.boalbert.offerthanterare.OfferthanterareApplication.main(OfferthanterareApplication.java:20)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:429)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1780)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1367)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 20 common frames omitted
+Caused by: java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.getNextRecord(CSVParser.java:145)
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.hasNext(CSVParser.java:155)
+	at se.boalbert.offerthanterare.services.ReadWriteDataImpl.importDataFromFolder(ReadWriteDataImpl.java:57)
+	at se.boalbert.offerthanterare.services.OfferDataServiceImpl.populateAllStatsWithImportedStats(OfferDataServiceImpl.java:54)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 32 common frames omitted
+Caused by: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.apache.commons.csv.Lexer.parseEncapsulatedToken(Lexer.java:281)
+	at org.apache.commons.csv.Lexer.nextToken(Lexer.java:158)
+	at org.apache.commons.csv.CSVParser.nextRecord(CSVParser.java:674)
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.getNextRecord(CSVParser.java:142)
+	... 42 common frames omitted
+2021-01-25 14:28:28,668 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 19188 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:28:28,681 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:28:28,692 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:28:30,201 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:28:30,211 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:28:30,212 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:28:30,213 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:28:30,304 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:28:30,305 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1494 ms
+2021-01-25 14:28:30,376 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:28:30,376 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:28:30,377 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:28:30,431 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:28:30,432 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:28:30,543 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:28:30,543 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 14:28:30,560 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+2021-01-25 14:28:30,563 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2021-01-25 14:28:30,577 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-01-25 14:28:30,607 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:608)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
+	at se.boalbert.offerthanterare.OfferthanterareApplication.main(OfferthanterareApplication.java:20)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:429)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1780)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1367)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 20 common frames omitted
+Caused by: java.lang.IllegalStateException: IOException reading next record: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.getNextRecord(CSVParser.java:145)
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.hasNext(CSVParser.java:155)
+	at se.boalbert.offerthanterare.services.ReadWriteDataImpl.importDataFromFolder(ReadWriteDataImpl.java:57)
+	at se.boalbert.offerthanterare.services.OfferDataServiceImpl.populateAllStatsWithImportedStats(OfferDataServiceImpl.java:54)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 32 common frames omitted
+Caused by: java.io.IOException: (line 1) invalid char between encapsulated token and delimiter
+	at org.apache.commons.csv.Lexer.parseEncapsulatedToken(Lexer.java:281)
+	at org.apache.commons.csv.Lexer.nextToken(Lexer.java:158)
+	at org.apache.commons.csv.CSVParser.nextRecord(CSVParser.java:674)
+	at org.apache.commons.csv.CSVParser$CSVRecordIterator.getNextRecord(CSVParser.java:142)
+	... 42 common frames omitted
+2021-01-25 14:30:29,797 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 20412 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:30:29,803 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:30:29,803 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:30:31,309 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:30:31,326 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:30:31,327 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:30:31,327 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:30:31,441 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:30:31,442 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1528 ms
+2021-01-25 14:30:31,508 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:30:31,509 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:30:31,510 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:30:31,581 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:30:31,582 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:30:31,719 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:30:31,719 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 14:30:31,991 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 14:30:32,084 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 14:30:32,240 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:30:32,273 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 14:30:32,287 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 3.511 seconds (JVM running for 5.207)
+2021-01-25 14:31:11,862 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 10060 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:31:11,869 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:31:11,870 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:31:14,109 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:31:14,127 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:31:14,129 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:31:14,132 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:31:14,277 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:31:14,277 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2289 ms
+2021-01-25 14:31:14,408 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:31:14,409 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:31:14,412 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:31:14,456 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:31:14,456 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:31:14,586 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:31:14,586 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 14:31:14,901 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 14:31:15,065 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 14:31:15,248 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:31:15,280 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 14:31:15,302 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 4.975 seconds (JVM running for 7.535)
+2021-01-25 14:33:31,757 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 21180 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:33:31,763 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:33:31,764 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:33:33,950 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:33:33,964 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:33:33,965 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:33:33,966 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:33:34,072 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:33:34,073 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2148 ms
+2021-01-25 14:33:34,157 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:33:34,157 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:33:34,158 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:33:34,195 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:33:34,196 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:33:34,286 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:33:34,286 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 14:33:34,503 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 14:33:34,587 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 14:33:34,729 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 14:33:34,761 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:33:34,792 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 14:33:34,820 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 4.062 seconds (JVM running for 6.017)
+2021-01-25 14:34:00,008 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:35:00,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:36:00,006 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:37:00,014 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:38:00,015 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:39:00,004 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:40:00,024 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:41:00,012 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:42:00,031 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:43:00,010 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:44:00,011 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:45:00,020 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:46:00,010 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:47:00,007 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:48:00,014 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:49:00,010 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:50:00,012 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:51:00,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:52:00,001 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:53:00,001 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: */5 * * * *
+2021-01-25 14:53:43,611 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 21144 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:53:43,618 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:53:43,620 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:53:45,186 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:53:45,200 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:53:45,201 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:53:45,201 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:53:45,402 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:53:45,407 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1627 ms
+2021-01-25 14:53:45,558 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:53:45,559 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:53:45,560 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:53:45,645 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:53:45,645 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:53:45,783 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:53:45,784 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 14:53:45,820 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.NumberFormatException: For input string: "Sjuhäradsbygdens Färgeri AB"
+2021-01-25 14:53:45,825 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2021-01-25 14:53:45,843 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-01-25 14:53:45,881 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.NumberFormatException: For input string: "Sjuhäradsbygdens Färgeri AB"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:608)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
+	at se.boalbert.offerthanterare.OfferthanterareApplication.main(OfferthanterareApplication.java:20)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl': Invocation of init method failed; nested exception is java.lang.NumberFormatException: For input string: "Sjuhäradsbygdens Färgeri AB"
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:429)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1780)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1367)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 20 common frames omitted
+Caused by: java.lang.NumberFormatException: For input string: "Sjuhäradsbygdens Färgeri AB"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Integer.parseInt(Integer.java:770)
+	at se.boalbert.offerthanterare.services.OfferDataServiceImpl.createOffer(OfferDataServiceImpl.java:76)
+	at se.boalbert.offerthanterare.services.ReadWriteDataImpl.importDataFromFolder(ReadWriteDataImpl.java:59)
+	at se.boalbert.offerthanterare.services.OfferDataServiceImpl.populateAllStatsWithImportedStats(OfferDataServiceImpl.java:55)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 32 common frames omitted
+2021-01-25 14:56:05,121 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 9664 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:56:05,126 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:56:05,128 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:56:06,753 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:56:06,765 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:56:06,766 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:56:06,766 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:56:06,866 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:56:06,867 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1621 ms
+2021-01-25 14:56:06,967 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:56:06,968 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:56:06,969 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:56:07,018 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:56:07,019 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:56:07,118 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:56:07,118 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 14:56:07,138 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:56:07,139 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 14:56:07,177 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl' defined in file [C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes\se\boalbert\offerthanterare\services\OfferDataServiceImpl.class]: Initialization of bean failed; nested exception is java.lang.IllegalStateException: Encountered invalid @Scheduled method 'testScheduele': Cron expression must consist of 6 fields (found 5 in "5 6,10,3,6 * * *")
+2021-01-25 14:56:07,181 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2021-01-25 14:56:07,201 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-01-25 14:56:07,249 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'offerDataServiceImpl'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl' defined in file [C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes\se\boalbert\offerthanterare\services\OfferDataServiceImpl.class]: Initialization of bean failed; nested exception is java.lang.IllegalStateException: Encountered invalid @Scheduled method 'testScheduele': Cron expression must consist of 6 fields (found 5 in "5 6,10,3,6 * * *")
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:608)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298)
+	at se.boalbert.offerthanterare.OfferthanterareApplication.main(OfferthanterareApplication.java:20)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'offerDataServiceImpl' defined in file [C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes\se\boalbert\offerthanterare\services\OfferDataServiceImpl.class]: Initialization of bean failed; nested exception is java.lang.IllegalStateException: Encountered invalid @Scheduled method 'testScheduele': Cron expression must consist of 6 fields (found 5 in "5 6,10,3,6 * * *")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:617)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1367)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 20 common frames omitted
+Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled method 'testScheduele': Cron expression must consist of 6 fields (found 5 in "5 6,10,3,6 * * *")
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduled(ScheduledAnnotationBeanPostProcessor.java:511)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$null$1(ScheduledAnnotationBeanPostProcessor.java:374)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(ScheduledAnnotationBeanPostProcessor.java:374)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(ScheduledAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	... 29 common frames omitted
+2021-01-25 14:57:05,290 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 22316 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 14:57:05,295 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 14:57:05,296 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 14:57:07,329 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 14:57:07,346 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:57:07,347 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 14:57:07,348 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 14:57:07,477 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 14:57:07,477 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1985 ms
+2021-01-25 14:57:07,559 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:57:07,560 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 14:57:07,560 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 14:57:07,602 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:57:07,603 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 14:57:07,749 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:57:07,750 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 14:57:07,889 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 14:57:07,889 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 14:57:08,243 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 14:57:08,379 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 14:57:08,569 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 14:57:08,604 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 14:57:08,644 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 14:57:08,663 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 4.538 seconds (JVM running for 6.41)
+2021-01-25 15:06:34,460 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 10716 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:06:34,465 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:06:34,466 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:06:36,330 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 15:06:36,350 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:06:36,351 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 15:06:36,351 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 15:06:36,477 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 15:06:36,478 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1913 ms
+2021-01-25 15:06:36,588 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:06:36,589 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:06:36,590 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:06:36,636 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:06:36,638 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:06:36,768 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:06:36,768 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:06:36,833 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:06:36,834 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:06:37,014 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:06:37,112 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:06:37,231 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:06:37,249 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:06:37,277 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 15:06:37,301 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 4.022 seconds (JVM running for 6.408)
+2021-01-25 15:09:08,323 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 18896 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:09:08,336 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:09:08,338 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:09:09,942 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 15:09:09,957 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:09:09,958 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 15:09:09,959 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 15:09:10,099 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 15:09:10,099 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1612 ms
+2021-01-25 15:09:10,184 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:09:10,185 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:09:10,186 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:09:10,248 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:09:10,248 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:09:10,357 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:09:10,358 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:09:10,430 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:09:10,432 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:09:10,641 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:09:10,765 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:09:10,900 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:09:10,917 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:09:10,939 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 15:09:10,954 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 3.745 seconds (JVM running for 6.022)
+2021-01-25 15:10:00,012 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:01,015 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:02,000 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:03,011 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:04,000 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:05,001 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:06,014 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:07,000 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:08,005 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:09,011 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:10,013 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:11,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:12,011 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:13,006 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:14,002 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:15,003 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:16,004 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:17,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:18,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:19,006 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:20,015 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:21,001 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:22,013 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:23,014 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:24,012 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:25,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:26,010 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:27,009 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:28,008 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:10:49,542 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 23776 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:10:49,549 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:10:49,550 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:10:50,955 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 15:10:50,966 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:10:50,966 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 15:10:50,967 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 15:10:51,065 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 15:10:51,066 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1394 ms
+2021-01-25 15:10:51,153 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:10:51,154 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:10:51,154 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:10:51,193 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:10:51,193 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:10:51,284 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:10:51,284 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:10:51,342 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:10:51,342 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:10:51,542 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:10:51,634 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:10:51,783 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:10:51,811 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:10:51,842 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 15:10:51,861 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 3.272 seconds (JVM running for 4.804)
+2021-01-25 15:12:00,014 TRACE se.boalbert.offerthanterare.services.OfferDataServiceImpl [scheduling-1] Logging pattern: * 10 6,10,15,16 * * *
+2021-01-25 15:22:32,389 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 13232 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:22:32,393 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:22:32,394 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:22:34,020 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 15:22:34,032 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:22:34,033 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 15:22:34,033 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 15:22:34,121 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 15:22:34,122 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1633 ms
+2021-01-25 15:22:34,182 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Trying to run running schedueled import
+2021-01-25 15:22:34,182 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] 0 10 6,10,14,18 * * *
+2021-01-25 15:22:34,183 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:22:34,183 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:22:34,184 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:22:34,237 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:22:34,238 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:22:34,362 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:22:34,363 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:22:34,453 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Absolute filepath to offer files: 
+2021-01-25 15:22:34,453 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:22:34,498 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Imported: 759 offers.
+2021-01-25 15:22:34,646 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:22:34,748 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:22:34,881 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:22:34,898 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:22:34,920 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 15:22:34,935 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 3.531 seconds (JVM running for 4.978)
+2021-01-25 15:24:07,585 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 18392 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:24:07,591 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:24:07,592 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:24:08,911 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 15:24:08,923 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:24:08,924 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 15:24:08,925 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 15:24:09,012 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 15:24:09,013 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1345 ms
+2021-01-25 15:24:09,074 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Trying to run running schedueled import
+2021-01-25 15:24:09,074 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] 0 10 6,10,14,18 * * *
+2021-01-25 15:24:09,075 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:24:09,076 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:24:09,076 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:24:09,114 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:24:09,114 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:24:09,207 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:24:09,207 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:24:09,303 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:24:09,304 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:24:09,351 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Imported: 759 offers.
+2021-01-25 15:24:09,500 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:24:09,574 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:24:09,693 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:24:09,716 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:24:09,747 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 15:24:09,763 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 3.028 seconds (JVM running for 4.54)
+2021-01-25 15:24:29,222 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-25 15:24:29,224 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-01-25 15:24:29,225 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2021-01-25 15:24:43,923 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [http-nio-8080-exec-7] Saving to: \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\UPDATES\MLT_UPDATES.CSV
+2021-01-25 15:26:25,016 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplication using Java 11.0.8 on Prot-0123 with PID 13000 (C:\Users\albert.andersson\IdeaProjects\Offerthanterare\target\classes started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:26:25,026 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:26:25,027 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:26:26,624 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-01-25 15:26:26,636 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:26:26,637 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2021-01-25 15:26:26,638 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-01-25 15:26:26,750 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-01-25 15:26:26,751 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1591 ms
+2021-01-25 15:26:26,817 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Trying to run running schedueled import
+2021-01-25 15:26:26,818 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] 0 10 6,10,14,18 * * *
+2021-01-25 15:26:26,818 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:26:26,819 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:26:26,819 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:26:26,858 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:26:26,859 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:26:26,970 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:26:26,971 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:26:27,026 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:26:27,026 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:26:27,051 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Imported: 759 offers.
+2021-01-25 15:26:27,216 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:26:27,300 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:26:27,462 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:26:27,478 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-01-25 15:26:27,502 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-25 15:26:27,519 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplication in 3.691 seconds (JVM running for 5.314)
+2021-01-25 15:26:33,675 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-25 15:26:33,676 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-01-25 15:26:33,677 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2021-01-25 15:26:40,635 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [http-nio-8080-exec-3] Saving to: Offer{company='MLT AB', offerNo=7317, customerNo=3305, customerName='Octapharma AB', offerName='3D - 3D intresse', status=70, chance=50, dateUpdated=''}\\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\UPDATES\MLT_UPDATES.CSV
+2021-01-25 15:29:31,959 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfferthanterareApplicationTests using Java 11.0.8 on Prot-0123 with PID 16876 (started by albert.andersson in C:\Users\albert.andersson\IdeaProjects\Offerthanterare)
+2021-01-25 15:29:31,978 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.4.0, Spring v5.3.1
+2021-01-25 15:29:31,986 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-01-25 15:29:33,945 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Trying to run running schedueled import
+2021-01-25 15:29:33,946 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] 0 10 6,10,14,18 * * *
+2021-01-25 15:29:33,960 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Looking for .csv import file in \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:29:33,961 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Looking for offers in: 
+2021-01-25 15:29:33,963 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT
+2021-01-25 15:29:34,020 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:29:34,021 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\MLT_OFFERDATA.TXT
+2021-01-25 15:29:34,174 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:29:34,175 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\PROTOMA_OFFERDATA.TXT
+2021-01-25 15:29:34,270 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] Found file: 
+2021-01-25 15:29:34,271 TRACE se.boalbert.offerthanterare.services.ReadWriteDataImpl [main] \\PROTSRV6.intra.protoma.se\Pyramiddok\PYMLT\EXPORT\DATA\OFFERT\RUNTIME_OFFERDATA.TXT
+2021-01-25 15:29:34,322 INFO se.boalbert.offerthanterare.services.OfferDataServiceImpl [main] Imported: 759 offers.
+2021-01-25 15:29:35,318 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-25 15:29:35,580 INFO org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping [main] Adding welcome page template: index
+2021-01-25 15:29:36,172 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2021-01-25 15:29:36,267 INFO org.springframework.boot.StartupInfoLogger [main] Started OfferthanterareApplicationTests in 5.436 seconds (JVM running for 7.585)
+2021-01-25 15:29:37,276 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'taskScheduler'
+2021-01-25 15:29:37,280 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'

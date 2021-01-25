@@ -42,7 +42,7 @@ public class ReadWriteDataImpl {
 		for (Path file : listFiles) {
 
 			String absolutPath = String.valueOf(file.toAbsolutePath());
-			logger.trace("Absolute filepath to offer files: ");
+			logger.trace("Found file: ");
 			logger.trace(absolutPath);
 
 			Reader fileReader = new FileReader(absolutPath, StandardCharsets.UTF_8);

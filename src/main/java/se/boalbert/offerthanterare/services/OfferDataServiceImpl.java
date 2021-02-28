@@ -35,7 +35,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 	@Value("${file.export.runtime}")
 	private String FILENAME_RUNTIME;
 
-	private String dateUpdated = null;
+	private String dateUpdated;
 
 	@Override
 	public String getDateUpdated() {
@@ -43,7 +43,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 	}
 
 	private List<Offer> allOffers = new ArrayList<>();
-
 
 	@Override
 	@PostConstruct
@@ -102,9 +101,8 @@ public class OfferDataServiceImpl implements OfferDataService {
 			Date secondDate = sdf.parse(updateDate);
 
 			long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
-			long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
-			return diff;
+			return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 		}
 		return -1;
 
@@ -127,9 +125,8 @@ public class OfferDataServiceImpl implements OfferDataService {
 			return EXPORT_UPDATES_DIR + FILENAME_RUNTIME;
 		} else {
 			logger.info("Failed, saving to null");
+			return null;
 		}
-
-		return null;
 	}
 
 	@Override
@@ -148,7 +145,7 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 	@Override
 	public List<Offer> getAllOffersSortedByChance() {
-		Collections.sort(allOffers, Comparator.comparingInt(Offer :: getChance).reversed());
+		allOffers.sort(Comparator.comparingInt(Offer :: getChance).reversed());
 		return allOffers;
 	}
 
@@ -163,7 +160,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 
 		for (Offer allOffer : allOffers) {
 			if (allOffer.getOfferNo() == id) {
-
 				return allOffer;
 			}
 		}
@@ -179,7 +175,6 @@ public class OfferDataServiceImpl implements OfferDataService {
 		String kommentar = offerStats.getComment();
 
 		for (Offer offer : allOffers) {
-
 			if (offer.getOfferNo() == ordernr) {
 				offer.setStatus(status);
 				offer.setChance(chans);

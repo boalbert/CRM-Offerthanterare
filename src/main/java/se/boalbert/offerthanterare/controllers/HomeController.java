@@ -1,8 +1,5 @@
 package se.boalbert.offerthanterare.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +15,13 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-	@Autowired
-	OfferDataServiceImpl offerDataServiceImpl;
+	private final OfferDataServiceImpl offerDataServiceImpl;
+	private final ReadWriteDataImpl readWriteDataImpl;
 
-	@Autowired
-	ReadWriteDataImpl readWriteDataImpl;
+	public HomeController(OfferDataServiceImpl offerDataServiceImpl, ReadWriteDataImpl readWriteDataImpl) {
+		this.offerDataServiceImpl = offerDataServiceImpl;
+		this.readWriteDataImpl = readWriteDataImpl;
+	}
 
 	@GetMapping("/")
 	public String home(Model model) {
@@ -55,7 +54,6 @@ public class HomeController {
 
 		return "update";
 	}
-
 
 	@PostMapping("/updateOffer")
 	public String saveOffer(@ModelAttribute("offer") Offer offer) {

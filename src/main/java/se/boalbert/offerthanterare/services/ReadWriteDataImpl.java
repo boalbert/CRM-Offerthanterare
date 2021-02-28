@@ -29,7 +29,7 @@ public class ReadWriteDataImpl {
 
 	private static final OfferDataServiceImpl offerDataServiceImpl = new OfferDataServiceImpl();
 
-	public static ArrayList<Offer> importDataFromFolder(String offerDirectory) throws IOException, ParseException {
+	public static List<Offer> importDataFromFolder(String offerDirectory) throws IOException, ParseException {
 
 		Path filePath = Paths.get(offerDirectory);
 
@@ -37,7 +37,7 @@ public class ReadWriteDataImpl {
 		logger.trace(filePath.toString());
 		List<Path> listFiles = listFiles(filePath);
 
-		ArrayList<Offer> importedOffers = new ArrayList<>();
+		List<Offer> importedOffers = new ArrayList<>();
 
 		for (Path file : listFiles) {
 
